@@ -6,6 +6,7 @@
     "export-pdf": "press-export-pdf export ./docs"
   },
   "devDependencies": {
+    "vitepress": "^1.6.3",
     "vitepress-export-pdf": "^1.0.0"
   }
 }
