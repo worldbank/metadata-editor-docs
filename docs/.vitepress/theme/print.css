@@ -29,7 +29,8 @@
   p,
   .vp-doc p,
   .vp-doc li,
-  td
+  td,
+  table td
   {
     font-size: 12px;
     line-height: 1.4!important;
