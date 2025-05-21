@@ -22,24 +22,24 @@ hero:
 
 features:
   - icon: 
-      src: /img/book-open-variant.svg
+      src: /book-open-variant.svg
     title: User Guide
     details: Learn how to use the Metadata Editor with step-by-step instructions and best practices.
     link: /intro_about
   - icon: 
-      src: /img/file-pdf-box.svg
+      src: /file-pdf-box.svg
     title: PDF Documentation
     details: Download the complete user guide in PDF format for offline access.
     link: /metadata-editor-docs/metadata-editor-guide.pdf
 
   - icon:
-      src: /img/github-mark.svg
+      src: /github-mark.svg
     title: Contribute to Documentation
     details: Help improve the Metadata Editor documentation by contributing on GitHub.
     link: https://github.com/worldbank/metadata-editor-docs
   
   - icon: 
-      src: /img/logo-dark.svg
+      src: /logo-dark.svg
     title: Metadata Editor
     details: Explore the Metadata Editor source code and contribute to its development on GitHub.
     link: https://github.com/worldbank/metadata-editor
