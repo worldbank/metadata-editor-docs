@@ -25,6 +25,5 @@ Thumbs.db
 .env.*.local
 
 # Optional: Ignore lock files if not needed
-package-lock.json
 yarn.lock
 pnpm-lock.yaml
