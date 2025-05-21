@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Metadata Editor",
   description: "Metadata Editor user guide",
+  base: '/metadata-editor-docs/',
   themeConfig: {
     logo: 'img/logo-var-dark.svg',
     search: {
