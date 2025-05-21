@@ -6,7 +6,7 @@ export default defineConfig({
   description: "Metadata Editor user guide",
   base: '/metadata-editor-docs/',
   themeConfig: {
-    logo: 'img/logo-var-dark.svg',
+    logo: '/logo-var-dark.svg',
     search: {
       provider: 'local'
     },

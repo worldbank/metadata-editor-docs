@@ -82,7 +82,7 @@ export default defineUserConfig({
         return aIndex - bIndex;
     },
   outFile: 'metadata-editor-guide.pdf',
-  outDir: 'docs/downloads',
+  outDir: 'docs/public',
   pdfOptions: {
     format: 'A4',
     printBackground: true,

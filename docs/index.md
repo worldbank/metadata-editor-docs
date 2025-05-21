@@ -7,7 +7,7 @@ hero:
   text: "A multi-standard open-source metadata editor"
   tagline: User and practice guide
   image:
-    src: /img/logo-var-dark.svg
+    src: /logo-var-dark.svg
     alt: VitePress
   actions:
     - theme: brand
@@ -30,7 +30,7 @@ features:
       src: /img/file-pdf-box.svg
     title: PDF Documentation
     details: Download the complete user guide in PDF format for offline access.
-    link: /downloads/metadata-editor-guide.pdf
+    link: /metadata-editor-docs/metadata-editor-guide.pdf
 
   - icon:
       src: /img/github-mark.svg
