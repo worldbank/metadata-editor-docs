@@ -1,0 +1,83 @@
+@media print {
+
+  .VPNav,
+  .VPLocalNav,
+  .VPDocFooter {
+    display: none !important;
+  }
+}
+
+
+@media print {
+
+  body {
+    font-size: 12px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+
+  p,
+  .vp-doc p,
+  .vp-doc li,
+  td
+  {
+    font-size: 12px;
+    line-height: 1.4!important;
+  }
+
+  h1 {
+    page-break-before: always;
+  }
+
+  /* Prevent page break on the first chapter */
+  h1:first-of-type {
+    page-break-before: auto;
+  }
+
+}
+
+.heading .text{
+  font-size:22px;
+}
+
+
+.print-cover-page-class h1, 
+.print-cover-page-class h2,
+.print-cover-page-class h3{
+  border:0px;
+  margin-top:0px;
+  margin-bottom:0px;
+  padding-bottom:0px;
+  padding-top:0px;
+}
+
+.print-cover-page-class h1{
+  font-size:56px;
+  font-weight:bold;
+  margin-top:30px;
+  line-height:1.2;
+}
+
+.print-cover-page-class h2{
+  font-size:46px;
+  font-weight:bold;
+  margin-bottom:30px;
+  line-height:1.2;
+}
+
+.print-cover-page-class h3{
+  font-size:26px;
+  font-weight:bold;
+  margin-bottom:30px;
+  line-height:1.2;
+}

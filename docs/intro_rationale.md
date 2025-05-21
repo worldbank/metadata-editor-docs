@@ -1,0 +1,17 @@
+# Rationale and objective
+
+The volume and diversity of data available to researchers, policymakers, and analysts are expanding rapidly. However, despite the proliferation of data resources, many valuable datasets remain underutilized due to challenges in discovering, understanding, and effectively using them. Without proper documentation, even high-quality data can be difficult to interpret, integrate, or trust. To fully realize the potential of data, it must be findable, interpretable, accessible, and reusable. High-quality metadata is essential to achieving these objectives.
+
+Metadata is structured information that describes, explains, locates, and facilitates the retrieval, use, and management of data resources (National Information Standards Organization, 2004). It serves as the foundation of data discovery, enabling search engines, cataloging systems, and knowledge management platforms to efficiently index and retrieve datasets. Beyond discovery, metadata enables users to assess the relevance, quality, and fitness-for-purpose of a dataset before investing time and resources in its use. Well-structured metadata is also essential for making data AI-ready, as it enhances machine interpretability and supports automation in data processing, integration, and analysis.
+
+However, producing high-quality metadata is a complex task. Data repositories, statistical agencies, research institutions, and other data-producing organizations face challenges in maintaining consistency, interoperability, and completeness in metadata documentation. Adopting internationally recognized metadata standards and schemas is critical to ensuring metadata quality. These standards—developed by expert communities for different data types—enable structured, detailed, and interoperable metadata that enhances data usability. Metadata compliance with established standards also supports interoperability across data management and dissemination systems, streamlining data integration and exchange.
+
+To address these challenges, the ***Metadata Editor*** provides an open-source solution for documenting diverse data types using internationally recognized metadata standards (metadata schemas). Developed by the World Bank, the Metadata Editor is designed to:
+
+- **Ensure flexibility** – allowing users to develop and customize metadata templates tailored to specific needs, including domain-specific controlled vocabularies.
+- **Enhance usability** – providing an intuitive interface that supports both technical and non-technical users in metadata creation and management.
+- **Foster collaboration** – supporting multi-user workflows with advanced permission settings in its web-based version, enabling teams to work efficiently on metadata documentation.
+- **Improve data quality and interoperability** – ensuring that metadata aligns with established standards, facilitating data integration across systems, and supporting data governance and quality assurance frameworks.
+- **Prepare data for the AI era** – enabling structured, machine-readable metadata that improves the discoverability, interpretability, and automation of data processing, making datasets more useful for AI applications and advanced analytics.
+
+By streamlining metadata creation and ensuring adherence to international standards, the Metadata Editor aims to contribute to the modernization of data dissemination. It enables organizations to provide and disseminate credible, high-quality, and accessible data.

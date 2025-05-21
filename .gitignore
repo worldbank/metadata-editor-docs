@@ -1,0 +1,30 @@
+# Node.js dependencies
+node_modules/
+
+# VitePress build output
+docs/.vitepress/dist/
+
+# Temporary files and logs
+*.log
+*.tmp
+*.temp
+cache
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Editor-specific files
+.vscode/
+.idea/
+*.swp
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Optional: Ignore lock files if not needed
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
