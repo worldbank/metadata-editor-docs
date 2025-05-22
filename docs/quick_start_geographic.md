@@ -1,8 +1,8 @@
 # Quick start: Geographic dataset
 
-In this example, we will document a geographic dataset extracted from the Humanitarian Data Exchange (HDX) website. This dataset provides an outline of camps of Rohingya refugees in Cox's Bazar, Bangladesh. The only file you need to reproduce this Quick-Start example is the image file *.../image/HDX_BGD_camps_thumbnail.jpg* (feel free to use any another PNG or JPG image file of your choice).
+In this example, we will document a geographic dataset extracted from the Humanitarian Data Exchange (HDX) website. This dataset provides an outline of camps of Rohingya refugees in Cox's Bazar, Bangladesh. The only file you need to reproduce this Quick start example is the image file *.../image/HDX_BGD_camps_thumbnail.jpg* (feel free to use any another PNG or JPG image file of your choice).
 
-> This Quick Start section does not include detailed guidance on documenting geographic data. For comprehensive instructions, see the chapter **Documenting geographic datasets and services**.
+> This Quick start section does not include detailed guidance on documenting geographic data. For comprehensive instructions, see the chapter **Documenting geographic datasets and services**.
 
 
 ## Step 1: Create a new project and add a thumbnail

@@ -1,6 +1,6 @@
 # Quick start: Overview
 
-The Quick Start examples provide a fast way to familiarize yourself with the Metadata Editor and experiment with creating standard-compliant metadata. Designed as step-by-step walkthroughs, these examples guide you through the core features of the application, allowing you to practice metadata creation with pre-provided sample files. Each example focuses on a specific data type supported by the Metadata Editor. We provide a dedicated Quick Start example for each supported data type:
+The Quick start examples provide a fast way to familiarize yourself with the Metadata Editor and experiment with creating standard-compliant metadata. Designed as step-by-step walkthroughs, these examples guide you through the core features of the application, allowing you to practice metadata creation with pre-provided sample files. Each example focuses on a specific data type supported by the Metadata Editor. We provide a dedicated Quick start example for each supported data type:
 - ***Document*** – Documenting a publication (in this case, a book).
 - ***Microdata*** – Documenting a survey dataset (a synthetic survey dataset composed of a household-level and individual data files provided in Stata format).
 - ***Indicator and database*** – Documenting a statistical indicator and its source database.

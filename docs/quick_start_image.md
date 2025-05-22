@@ -1,10 +1,10 @@
-# Quick Start: Image
+# Quick start: Image
 
 In this example, we will document an image extracted from the World Bank photo collection in Flickr (https://www.flickr.com/photos/worldbank/14131666634/in/album-72157626025379650). This image shows a tomato stand in a market near Ramallah’s main mosque. We assume that you want to publish the image in a data catalog, with a link to the World Bank's photo album.
 
-The only file you need to reproduce this Quick-Start example is the image file *.../image/wb_photo_food_market.jpg* (feel free to use another image of your choice).
+The only file you need to reproduce this Quick start example is the image file *.../image/wb_photo_food_market.jpg* (feel free to use another image of your choice).
 
-> This Quick Start section does not include detailed guidance on documenting images. For comprehensive instructions, see the chapter **Documenting Data – Images**.
+> This Quick start section does not include detailed guidance on documenting images. For comprehensive instructions, see the chapter **Documenting Data – Images**.
 
 
 ## Step 1: Create a new project and add a thumbnail
@@ -25,7 +25,7 @@ We will use the image itself as a thumbnail. Providing a thumbnail is not requir
 
 ![image](img/ME_UG_v1-0-0_quick_start_image_edit_thumbnail.png)
 
-The Metadata Editor offers two options to document images, corresponding to two different metadata standards: the Dublin Core (DCMI), or the IPTC. The decision to use one or the other option is made by selecting a DCMI-based or IPTC-based template. An image should not be documented using both options. In this Quick-start example, we will use the default DCMI metadata template, so there is no need to switch template (if the template shown in the *Template selection* frame is not the DCMI template, click on the template name and select a DCMI template from the list). 
+The Metadata Editor offers two options to document images, corresponding to two different metadata standards: the Dublin Core (DCMI), or the IPTC. The decision to use one or the other option is made by selecting a DCMI-based or IPTC-based template. An image should not be documented using both options. In this Quick start example, we will use the default DCMI metadata template, so there is no need to switch template (if the template shown in the *Template selection* frame is not the DCMI template, click on the template name and select a DCMI template from the list). 
 
 
 ## Step 2: Enter metadata

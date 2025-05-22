@@ -48,12 +48,12 @@ export default defineConfig({
         items: [
           { text: 'Overview', link: '/quick_start_overview' },
           { text: 'Document', link: '/quick_start_document' },
-          { text: 'Indicator', link: '/quick_start_indicator' },
           { text: 'Microdata', link: '/quick_start_microdata' },
-          { text: 'Geographic dataset', link: '/quick_start_geographic' },
-          { text: 'Scripts', link: '/quick_start_script' },
+          { text: 'Indicator', link: '/quick_start_indicator' },          
+          { text: 'Geographic dataset', link: '/quick_start_geographic' },          
           { text: 'Image', link: '/quick_start_image' },
-          { text: 'Video', link: '/quick_start_video' }
+          { text: 'Video', link: '/quick_start_video' },
+          { text: 'Scripts', link: '/quick_start_script' }
         ]
       },
       {
@@ -76,8 +76,8 @@ export default defineConfig({
         text: 'Documenting data',
         items: [
           { text: 'General instructions', link: '/documenting_general_instructions' },
-          { text: 'Microdata', link: '/documenting_microdata' },
           { text: 'Document', link: '/documenting_document' },
+          { text: 'Microdata', link: '/documenting_microdata' },          
           { text: 'Indicator and database', link: '/documenting_indicator' },
           { text: 'Geographic dataset or service', link: '/documenting_geographic' },
           { text: 'Image', link: '/documenting_image' },

@@ -1,10 +1,10 @@
-# Quick-start: Document
+# Quick start: Document
 
 In this example, we will document a book titled *The Analysis of Household Surveys: A Microeconometric Approach to Development Policy* authored by Angus Deaton and published in 2019. This book is freely available from the World Bank's Open Knowledge Repository at http://hdl.handle.net/10986/30394. 
 
-In this Quick-start exercise, we assume that you want to publish information on the book in a data catalog, with a link to the World Bank's Open Knowledge Repository (i.e., we assume that you not plan to make the book directly available from your catalog). The only file you need to reproduce this Quick-Start example is the image file of the book's cover page (file *.../quick_start_files/document/cover_deaton_survey_analysis.jpg*), although you may use another image file of your choice.
+In this Quick start exercise, we assume that you want to publish information on the book in a data catalog, with a link to the World Bank's Open Knowledge Repository (i.e., we assume that you not plan to make the book directly available from your catalog). The only file you need to reproduce this Quick start example is the image file of the book's cover page (file *.../quick_start_files/document/cover_deaton_survey_analysis.jpg*), although you may use another image file of your choice.
 
-> This Quick Start section does not include detailed guidance on documenting publications. For comprehensive instructions, see the chapter **Documenting a publication or report**.
+> This Quick start section does not include detailed guidance on documenting publications. For comprehensive instructions, see the chapter **Documenting a publication or report**.
 
 
 ## Step 1: Create a new project and add a thumbnail

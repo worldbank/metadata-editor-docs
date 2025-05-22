@@ -1,12 +1,12 @@
-# Quick Start: Indicator
+# Quick start: Indicator
 
 In this example, we will document an indicator produced by the World Bank, and published in the Bank's Poverty and Inequality Platform (PIP) and World Development Indicators (WDI): the *Poverty headcount ratio at $2.15 a day (2017 PPP) (% of population)*. The objective here is to document the indicator for cataloguing, not to publish the data.
 
 The metadata we will enter in the Metadata Editor is the metadata published by the World Bank at https://data.worldbank.org/indicator/SI.POV.DDAY?locations=US (downloaded on 12 February 2025). We will complement this metadata with information extracted from the data itself, e.g., to obtain the geographic and time coverage. Last, we will document the fact that this indicator is one of the Sustainable Development Goals monitoring indicators.
 
-The only files you need to reproduce this Quick-start example are the image file that will be used as thumbnail (*.../quick_start_files/indicator/poverty_thumbnail.jpg*) and the CSV file (*quick_start_files/indicator/SI.POV.DDAY_countries_data*) that contains the list of countries and years for which the data are available in the WDI database (CSV file extracted from an Excel file downloaded on 13 February 2025 from the World Bank website at https://api.worldbank.org/v2/en/indicator/SI.POV.DDAY?downloadformat=excel).
+The only files you need to reproduce this Quick start example are the image file that will be used as thumbnail (*.../quick_start_files/indicator/poverty_thumbnail.jpg*) and the CSV file (*quick_start_files/indicator/SI.POV.DDAY_countries_data*) that contains the list of countries and years for which the data are available in the WDI database (CSV file extracted from an Excel file downloaded on 13 February 2025 from the World Bank website at https://api.worldbank.org/v2/en/indicator/SI.POV.DDAY?downloadformat=excel).
 
-> This Quick Start section does not include detailed guidance on documenting indicators and time series. For comprehensive instructions, see the chapter **Documenting indicators and databases**. 
+> This Quick start section does not include detailed guidance on documenting indicators and time series. For comprehensive instructions, see the chapter **Documenting indicators and databases**. 
 
 
 ## Step 1: Create a new project 

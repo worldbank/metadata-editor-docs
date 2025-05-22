@@ -2,9 +2,9 @@
 
 In this Quick start example, we will document a research project titled *Double Jeopardy and Climate Impact in the Use of Large Language Models: Socio-economic Disparities and Reduced Utility for Non-English Speakers*. The scripts related to the project are available in the following GitHub repository: https://github.com/worldbank/double-jeopardy-in-llms. A working paper was published on arXiv, available at https://arxiv.org/abs/2410.10665. The project used three datasets, one of which is available as open data.
 
-The only file you need to reproduce this Quick-Start example is the image file *.../quick_start_files/scripts/llm_jeopardy_research.jpg* (or select any another JPG or PNG image of your choice).
+The only file you need to reproduce this Quick start example is the image file *.../quick_start_files/scripts/llm_jeopardy_research.jpg* (or select any another JPG or PNG image of your choice).
 
-> This Quick Start section does not include detailed guidance on documenting research projects and scripts. For comprehensive instructions, see the chapter **Documenting Data – Research projects and scripts**. 
+> This Quick start section does not include detailed guidance on documenting research projects and scripts. For comprehensive instructions, see the chapter **Documenting Data – Research projects and scripts**. 
 
 
 ## Step 1: Create a new project and add a thumbnail

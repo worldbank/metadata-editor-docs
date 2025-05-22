@@ -21,7 +21,7 @@ See the **Managing projects** section for a detailed description of this page.
 ## Creating a new project
 
 For all data types, the documentation process for a new project consists of: 
-1. Creating a project (by clicking on `CREATE NEW PROJECT` of `IMPORT` in the *My Projects* page. Refer to the Quick Start examples.
+1. Creating a project (by clicking on `CREATE NEW PROJECT` of `IMPORT` in the *My Projects* page. Refer to the Quick start examples.
 2. Selecting a template for the documentation of the project (optional, as a default template is automatically selected).
 3. Populating the metadata fields
 4. Adding external resources
