@@ -1,8 +1,8 @@
 # Metadata Editor Documentation
 
-This repository contains the source content for the [Metadata Editor](https://github.com/worldbank/metadata-editor) documentation site.
+This repository contains the source content for the [Metadata Editor](https://github.com/worldbank/metadata-editor) documentation.
 
-📘 **Live Preview:**  
+📘 **Preview:**  
 Visit the published documentation at:  👉 [https://worldbank.github.io/metadata-editor-docs/](https://worldbank.github.io/metadata-editor-docs/)
 
 ---

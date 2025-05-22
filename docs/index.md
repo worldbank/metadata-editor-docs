@@ -4,44 +4,36 @@ layout: home
 
 hero:
   name: "Metadata Editor"
-  text: "A multi-standard open-source metadata editor"
-  tagline: User and practice guide
+  text: <div>A multi-standard open-source metadata editor <div class="sub-text">World Bank, Office of the Chief Statistician</div></div>
+  tagline: User and practice guide  
   image:
     src: /logo-var-dark.svg
     alt: VitePress
-  actions:
-    - theme: brand
-      text: Introduction
-      link: /intro_about
-    - theme: alt
-      text: Quick start
-      link: /quick_start_overview
-    - theme: alt
-      text: Installation
-      link: /tech_installation
+  
+    
 
 features:
   - icon: 
       src: /book-open-variant.svg
-    title: User Guide
-    details: Learn how to use the Metadata Editor with step-by-step instructions and best practices.
+    title: User Guide in HTML
+    details: A searchable version of the user and practice guide,  including installation instructions, and step-by-step instructions.
     link: /intro_about
   - icon: 
       src: /file-pdf-box.svg
-    title: PDF Documentation
-    details: Download the complete user guide in PDF format for offline access.
+    title: User Guide in PDF
+    details: A downloadable version of the user and practice guide.
     link: /metadata-editor-docs/metadata-editor-guide.pdf
 
   - icon:
       src: /github-mark.svg
-    title: Contribute to Documentation
-    details: Help improve the Metadata Editor documentation by contributing on GitHub.
+    title: User Guide in Markdown
+    details: Use this link if you want to contribute to the documentation on GitHub, by providing content or suggestions.
     link: https://github.com/worldbank/metadata-editor-docs
   
   - icon: 
       src: /logo-dark.svg
     title: Metadata Editor
-    details: Explore the Metadata Editor source code and contribute to its development on GitHub.
+    details: The Metadata Editor’s Github repository. Access the application, contribute to the code, submit issues and suggestions.
     link: https://github.com/worldbank/metadata-editor
 
   
