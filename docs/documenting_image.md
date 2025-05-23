@@ -628,9 +628,12 @@ The **Provenance** container is used to document how, frow where, and when the i
 
 ## Save and export metadata (DCMI or IPTC)
 
+The metadata can be exported to JSON format, or saved as a ZIP package.
+
 
 ## Publish metadata (DCMI or IPTC)
 
+The metadata can be published directly to a NADA catalog by using the option "Publish to NADA".
 
 
 ## Augmenting image metadata using AI
