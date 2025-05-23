@@ -15,7 +15,7 @@ If you have an installed NADA catalog with administrator credentials, you can al
 
 Before starting, please ensure that:
 - You have the Metadata Editor installed on your system (server or PC), with an *Editor* role that allows you to create new projects.
-- You have downloaded the required example files from ... Insert Download Link ... and saved them in a dedicated folder on your PC (the files do not have to be on the server that hosts the Metadata Editor). If you unzip the file provided on GitHub, you will have a folder with the following structure (which is not imposed by the Metadata Editor; all you need is access to the files):
+- You have downloaded the required example **[quick start zip](https://github.com/worldbank/metadata-editor-docs/blob/main/docs/public/quick_start_files.zip)** and saved them in a dedicated folder on your PC (the files do not have to be on the server that hosts the Metadata Editor). If you unzip the file provided on GitHub, you will have a folder with the following structure (which is not imposed by the Metadata Editor; all you need is access to the files):
   
   ![image](img/ME_UG_v1-0-0_quick_start_intro_list_demo_files.png)
   
