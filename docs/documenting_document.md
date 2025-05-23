@@ -374,5 +374,5 @@ External resources that have already been created for another project can also b
 
 #### Administrative metadata
 
-One or multiple administrative metadata templates can be attached to the project. See See chapter **Documenting - General instructions** and **Administrtaive metadata**.
+One or multiple administrative metadata templates can be attached to the project. See See chapter **Documenting - General instructions** and **Administrative metadata**.
 
