@@ -20,7 +20,7 @@ After logging in, click on your username in the top menu to open a dropdown menu
 
 ![image](img/ME_UG_v1-0-0_user_menu.png)
 
-- `Profile` and API keys
+- ***Profile and API keys***
 
   Clicking on `Profile` opens a page displaying your profile details with an option to edit them.
 
@@ -30,10 +30,10 @@ After logging in, click on your username in the top menu to open a dropdown menu
 
   > ⚠️ Important: **Keep your API key confidential**. It is equivalent to a password to which your profile and permissions are associated. **If you suspect that your API key has been compromised, delete it immediately and generate a new one.** Refer to the section *The Metadata Editor API* for more details.
 
-- `Password`
+- ***Password***
 
   Opens a page where you can change your password.
 
-- `Site administration`
+- ***Site administration*** 
 
-  Available only to users with administrator credentials. Opens a dashboard displaying information about the projects you can access.
+  (Forthcoming) The *Site administration* option opens a dasboard of projects and users, only accessible to users with administrator credentials. 
