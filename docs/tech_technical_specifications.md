@@ -27,7 +27,7 @@ The application follows a **three-tier architecture**:
 
 
 
-## Data Conversion API (FastAPI – Python)
+## Data conversion API (FastAPI – Python)
 - **Framework**: FastAPI
 - **Dependencies**:
   - `pandas`: Data manipulation and structure transformation
@@ -37,7 +37,7 @@ The application follows a **three-tier architecture**:
 
 
 ## Deployment
-- **Server Requirements**:
+- **Server requirements**:
   - PHP 8.2+
   - Apache/Nginx
   - Python 3.8+ environment
