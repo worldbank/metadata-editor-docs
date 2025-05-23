@@ -40,14 +40,14 @@ You can now start entering the metadata related to the book itself in the *Docum
 
 Then proceed with the other sections in the navigation tree and fill out the following elements. 
 
-- **`Author`**: Angus Deaton
-- **`Publication date`** (in ISO format YYYY-MM-DD): 2019-01-16
-- **`Abstract`**: Two decades after its original publication, The Analysis of Household Surveys is reissued with a new preface by its author, Sir Angus Deaton, recipient of the 2015 Nobel Prize in Economic Sciences. This classic work remains relevant to anyone with a serious interest in using household survey data to shed light on policy issues. This book reviews the analysis of household survey data, including the construction of household surveys, the econometric tools useful for such analysis, and a range of problems in development policy for which this survey analysis can be applied. The author's approach remains close to the data, using transparent econometric and graphical techniques to present data in a way that can clearly inform policy and academic debates. Chapter 1 describes the features of survey design that need to be understood in order to undertake appropriate analysis. Chapter 2 discusses the general econometric and statistical issues that arise when using survey data for estimation and inference. Chapter 3 covers the use of survey data to measure welfare, poverty, and distribution. Chapter 4 focuses on the use of household budget data to explore patterns of household demand. Chapter 5 discusses price reform, its effects on equity and efficiency, and how to measure them. Chapter 6 addresses the role of household consumption and saving in economic development. The book includes an appendix providing code and programs using STATA, which can serve as a template for the users' own analysis.
-- **`Language`**: English (code EN)
-- **`Rights`**: CC BY 3.0 IGO
-- **`Document type`**: Book (select from drop down)
-- **`Keywords`**: Enter one keyword per row: household survey; survey design; data collection; economic development; development policy 
-- **`Topics`**: Enter one topic per row and only fill in column *Topic*): Development Patterns and Poverty; Living Standards; Poverty Assessment; Poverty and Policy; Statistical & Mathematical Sciences
+- ***Author*** Angus Deaton
+- ***Publication date*** (in ISO format YYYY-MM-DD): 2019-01-16
+- ***Abstract*** Two decades after its original publication, The Analysis of Household Surveys is reissued with a new preface by its author, Sir Angus Deaton, recipient of the 2015 Nobel Prize in Economic Sciences. This classic work remains relevant to anyone with a serious interest in using household survey data to shed light on policy issues. This book reviews the analysis of household survey data, including the construction of household surveys, the econometric tools useful for such analysis, and a range of problems in development policy for which this survey analysis can be applied. The author's approach remains close to the data, using transparent econometric and graphical techniques to present data in a way that can clearly inform policy and academic debates. Chapter 1 describes the features of survey design that need to be understood in order to undertake appropriate analysis. Chapter 2 discusses the general econometric and statistical issues that arise when using survey data for estimation and inference. Chapter 3 covers the use of survey data to measure welfare, poverty, and distribution. Chapter 4 focuses on the use of household budget data to explore patterns of household demand. Chapter 5 discusses price reform, its effects on equity and efficiency, and how to measure them. Chapter 6 addresses the role of household consumption and saving in economic development. The book includes an appendix providing code and programs using STATA, which can serve as a template for the users' own analysis.
+- ***Language*** English (code EN)
+- ***Rights*** CC BY 3.0 IGO
+- ***Document type*** Book (select from drop down)
+- ***Keywords*** Enter one keyword per row: household survey; survey design; data collection; economic development; development policy 
+- ***Topics*** Enter one topic per row and only fill in column *Topic*): Development Patterns and Poverty; Living Standards; Poverty Assessment; Poverty and Policy; Statistical & Mathematical Sciences
 
 This information can be entered in the Metadata Editor template in the following elements: 
 
