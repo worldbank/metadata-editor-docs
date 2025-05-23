@@ -1,12 +1,13 @@
 # Managing projects
 
 A **project** in the Metadata Editor represents a "dataset" of any type. This may include:
+- A **document** of any type.
 - A **microdataset** obtained from a survey, census, sensor, or administrative data recording system.
 - An **indicator** or **database** of indicators.
 - A vector or raster **geographic dataset** (or a geographic service).
-- A **document** of any type.
-- A research project with its associated **scripts**.
 - An **image** or **video**.
+- A research project with its associated **scripts**.
+
 
 ## The *My Projects* Page
 
