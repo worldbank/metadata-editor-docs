@@ -28,7 +28,7 @@ Metadata can be generated programmatically using R or Python (or similar languag
 
 Metadata generated programmatically can be saved as JSON or XML, or published in various applications. They can be published directly in the Metadata Editor, which can then serve as a central repository for the metadata.
 
-To be compatible with the Metadata Editor, the metadata must be generated in compliance with the schemas outlined in [ReDoc URL].
+To be compatible with the Metadata Editor, the metadata must be generated in compliance with the schemas outlined in https://worldbank.github.io/metadata-schemas/.
 
 
 ## Other metadata-enabled software applications
