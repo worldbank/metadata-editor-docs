@@ -1,4 +1,4 @@
-# Technical Specifications
+# Technical specifications
 
 ## Architecture
 The application follows a **three-tier architecture**:
