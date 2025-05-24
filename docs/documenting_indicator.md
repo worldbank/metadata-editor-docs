@@ -25,7 +25,7 @@ In addition to documenting individual indicators, the World Bank has developed a
 
 To establish a clear link between an indicator and its associated database, the indicator metadata schema includes a dedicated element that stores the database identifier, enabling seamless association between indicator metadata and database metadata.
 
-In data catalogs like a NADA catalog, the metadata on indicators and the raleted databases can be combined.
+In data catalogs like a NADA catalog, the metadata on indicators and the related databases can be combined.
  
 ![image](img/ME_UG_documenting_indicator_indicator_database_nada.png)
 
@@ -39,9 +39,9 @@ This section describes in detail the process of documenting an indicator, and th
 The following general principles should be followed to ensure the production of high-quality metadata. They apply broadly across metadata elements used to document statistical indicators. Subsequent sections of this Guide provide detailed instructions and quality criteria for specific metadata elements. These elements and criteria form the foundation of an AI-enabled system for metadata quality assurance and augmentation.
 - **Standardize terminology**. Use consistent terms across all metadata. Where applicable, adopt internationally recognized controlled vocabularies or code lists (e.g., for topics, sectors, geographic areas) to enhance interoperability and comparability.
 - **Maintain consistency in terminology and jargon**. Avoid mixing technical jargon with general terms unless clearly explained. Use consistent language and avoid introducing synonyms or alternative phrases for the same concept without clear justification.
-- **Link related indicators**. Where applicable, establish links among related indicators. Group variants, disaggregations, or derived indicators using relationships such as: Is part of, Has disaggregation, Derived from. This helps users navigate the catalog and understand the relationships among indicators.
+- **Link related indicators**. Where applicable, establish links among related indicators. Group variants, disaggregations, or derived indicators using relationships such as: *Is part of*, *Has disaggregation*, *Derived from*. This helps users navigate the catalog and understand the relationships among indicators.
 - **Spell out acronyms and abbreviations**. Avoid using unexplained acronyms, especially in definitions. Widely recognized acronyms (e.g., GDP, USD) may be used in titles, but must be spelled out or explained in the metadata definition or notes.
-- Use accessible and non-technical language. Write metadata in a clear and accessible style. Avoid excessive technical detail. Complex methodological information should be included in referenced documentation, not embedded in core metadata fields.
+- **Use accessible and non-technical language**. Write metadata in a clear and accessible style. Avoid excessive technical detail. Complex methodological information should be included in referenced documentation, not embedded in core metadata fields.
 
 
 ### Create a new project
