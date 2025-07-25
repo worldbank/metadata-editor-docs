@@ -4,11 +4,6 @@ This document provides step-by-step instructions to install and run the Metadata
 
 ## System Requirements
 
-### Prerequisites
-- **Visual C++ Runtime**: Download and install the latest Visual C++ Redistributable from Microsoft: https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170
-
-- Direct link to download Visual C++ Runtime (x64): https://aka.ms/vs/17/release/vc_redist.x64.exe
-
 ### Operating System and Hardware Requirements
 - **Operating System**: 64-bit Windows 10 or later
 - **Memory**: Minimum 8 GB RAM (16 GB recommended)
@@ -16,6 +11,9 @@ This document provides step-by-step instructions to install and run the Metadata
 - **Storage**: 5 GB available disk space
   - Installation requires approximately 1.5 GB
   - Additional space needed for project data and user files
+ 
+- **Visual C++ Runtime for Windows 10**:  Download and install the latest Visual C++ Redistributable from Microsoft: https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170
+  -  **Direct link to download Visual C++ Runtime (x64)**: https://aka.ms/vs/17/release/vc_redist.x64.exe 
 
 ## Download and Installation
 
@@ -31,6 +29,7 @@ This document provides step-by-step instructions to install and run the Metadata
 4. Click "Extract" to unzip the files
 
 ![Extracting the ZIP file](img/ME_UG_v1-0-0_extract-zip.png)
+
 
 ### Step 3: Launch the Application
 1. Navigate to the extracted folder
