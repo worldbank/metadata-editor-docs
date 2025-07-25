@@ -18,7 +18,7 @@ This document provides step-by-step instructions to install and run the Metadata
 ## Download and Installation
 
 ### Step 1: Download the Installer
-1. Navigate to the official download page: https://ihsn.org/downloads/MetadataEditorDesktop-1.0.0.zip
+1. Navigate to the official download page: https://ihsn.org/download/MetadataEditorDesktop-1.0.0.zip
 2. Download the ZIP file to your computer
 3. Note the download location for the next step
 
