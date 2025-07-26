@@ -134,7 +134,7 @@ You can optionally install NADA on your desktop. This will allow you to practice
 ### Troubleshooting Startup Issues
 If the application fails to start properly:
 
-1. Check the log files located in the programs/apache24/logs/ folder.
+1. Check the log files located in the `programs/apache24/logs/` folder (within the folder where you installed the Metadata Editor).
 2. Review the error messages in logs/error.log for details.
 3. If Apache fails to start and the logs reference php_curl or missing DLLs, the issue may be due to a missing Visual C++ Runtime.
 4. Make sure the application has been installed in a folder that allows you to run the executable file. If you do not have administrator credentials on your PC, note that your organization may have restrictions on where the application can be installed.  
