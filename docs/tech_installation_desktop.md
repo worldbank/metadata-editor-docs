@@ -64,8 +64,10 @@ This will create a shortcut directly on your desktop for quick access to the app
 ### Step 3: Launch the Application
 1. Navigate to the extracted folder
 2. Double-click on `MetadataEditorDesktop.exe` to start the application
+popup.
 
-**Note**: For first-time startup, it may take a few minutes for the application to initialize and start properly.
+- **Note 1**: Windows protection system may display a "Windows protected your PC" popup with a single option to not run the program. This warning is intended to avoid running executable files of unknown or non-trusted provenance. If you downloaded the installation package from the IHSN website (link provided above; do not use zip files from other sources), click on "More info" in that popup screen, then select "Run anyway".
+- **Note 2**: For first-time startup, it may take a few minutes for the application to initialize and start properly.
 
 ![Running the executable](img/ME_UG_v1-0-0_installer-run-exe.png)
 
