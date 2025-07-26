@@ -75,6 +75,7 @@ The application will display the App Launcher interface, which provides access t
 
 ![App Launcher interface](img/ME_UG_v1-0-0_installer-app-launcher.png)
 
+> NOTE: The application runs a database in the background. The *Restart* button allows you to restart it if it crashes for any reason. The *Exit* button will stop the database application (closing the Metadata Editor web browser windows will not close the application). 
 
 ## Setting Up the Metadata Editor
 
