@@ -13,7 +13,7 @@ If you cannot install the Metadata Editor on your desktop, you can still practic
 
 To access, please register using your email address and activate your account to use the system.
 
-⚠️ The sandbox is for **training purposes only** — please do not upload sensitive or production data.
+⚠️ The sandbox is for **training purposes only** — please do not upload sensitive or personal data.
 
 :::
 
