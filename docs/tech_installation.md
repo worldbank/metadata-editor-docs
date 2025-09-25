@@ -35,30 +35,39 @@ To run the Metadata Editor, you will need:
 - Apache 2.4 or later
 - IIS 6/7.x or later
 - NGINX
-- PHP: Version 8.1 or later, with the following required extensions:
+
+**PHP**:
+- Version 8.1 or later, with the following required extensions:
   - xsl
   - xml
   - mbstring
   - mysqli
+  - curl
+  - openssl
+  - zip
+
+To instructions on installing PHP, [see documentation](/tech_installation_php.html).
+
 
 **Database**:
-- MySQL 8.x or MariaDB. The database is not provided in the Metadata Editor package. The selected database application must be downloaded from its respective repository or website.
+- MySQL 8.x or MariaDB. 
+
 
 **Python**:
 - Python 3.12 or later is required for running the FastAPI backend for data import/export and generating summary statistics for Stata, SPSS, and CSV files.
 
 
-### Downloading and installing the Metadata Editor 
+## Downloading and installing the Metadata Editor 
 
 
-#### Required components
+### Required components
 
 To install the Metadata Editor, you need:
-- Metadata Editor: PHP application with a MySQL/MariaDB database.
-- PyDataTools: Python backend API for data import/export and summary statistics.
+- [Metadata Editor](https://github.com/worldbank/metadata-editor): PHP application with a MySQL/MariaDB database.
+- [Metadata Editor FastAPI](https://github.com/worldbank/metadata-editor-fastapi): Python backend API for data import/export and summary statistics.
 
 
-#### Folder structure 
+### Folder structure 
 
 After installation, your directory structure should look like this:
 
@@ -66,10 +75,10 @@ After installation, your directory structure should look like this:
 metadata_editor
 │
 +--editor
-+--pydatatools
++--fastapi
 ```
 
-#### Downloading the source code
+### Downloading the source code
 
 - ***Option 1: Using Git***
 
@@ -79,19 +88,19 @@ Navigate to the web server directory where you want to install the project and r
 $ mkdir metadata_editor
 $ cd metadata_editor
 
-$ git clone https://github.com/ihsn/editor
-$ git clone https://github.com/mah0001/pydatatools
+$ git clone https://github.com/worldbank/metadata-editor editor
+$ git clone https://github.com/worldbank/metadata-editor-fastapi fastapi
 ```
 
 - ***Option 2: Using Zip Packages***
 
    Download the zipped packages and extract them to create the required folder structure:
 
-     - Metadata editor: https://github.com/ihsn/editor/archive/refs/heads/main.zip
-    - PyDataTools: https://github.com/mah0001/pydatatools/archive/refs/heads/main.zip
+    - Metadata editor: https://github.com/worldbank/metadata-editor/archive/refs/heads/main.zip
+    - FastAPI: https://github.com/worldbank/metadata-editor-fastapi/archive/refs/heads/main.zip
   
 
-#### Configuring the database
+### Configuring the database
 
 **Step 1: Create Database and User**
 
@@ -168,7 +177,7 @@ $db['default'] = array(
 Save the file.
 
 
-#### Setting folder permissions
+### Setting folder permissions
 
 Run the following commands to set read/write permissions for the folders where the data will be stored:
 
@@ -177,7 +186,7 @@ $ chmod -R 775 datafiles files logs
 ```
 
 
-#### Running the installer
+### Running the installer
 
 - Open a web browser and navigate to the Editor installation URL. For example: http://your-domain/editor-folder-name, or http://localhost/editor-folder-name.
 
@@ -191,15 +200,28 @@ $ chmod -R 775 datafiles files logs
 ⚠️ Note: Use a complex password (at least 12 characters, including uppercase, numbers, and special characters) to enhance security.
 
 
-#### Installing and configuring PyDataTools (Python/FastAPI)
+### Installing and configuring Metadata Editor FastAPI (Python/FastAPI)
 
 - ***Step 1: Install Python*** Download and install Python 3.12 from https://www.python.org/downloads/.
 
-- ***Step 2: Install dependencies*** Navigate to the pydatatools folder and run:
+- ***Step 2: Install dependencies*** Navigate to the `fastapi` folder and run:
 
-  ```python
-	$ pip install -r requirements.txt
-  ```
+**Create a virtual environment (recommended)**
+
+```bash
+cd /path/to/your/metadata_editor/fastapi
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+**OR**
+
+```bash
+  pip install -r requirements.txt
+```
+
+
 
 - ***Step 3: Run the FastAPI service*** To start the FastAPI service, run:
 
@@ -207,14 +229,18 @@ $ chmod -R 775 datafiles files logs
 	$ nohup python -m uvicorn main:app --reload --host 0.0.0.0 --port 8000 &
    ```
 
+You should see something similar in the terminal window.
+
 ![image](img/ME_UG_v1-0-0_pydatatools_run.png)
 
 
-The Metadata Editor and PyDataTools should now be operational.  
+The Metadata Editor and FastAPI should now be operational.
+
+See section on how to configure [FastAPI as a service](tech_installation_fastapi.html).
 
 
 
-### Email configurations
+## Email configurations
 
 For the Metadata Editor to function correctly it is important that this step be completed.
 
@@ -260,7 +286,7 @@ The Editor site administration includes a page to test email settings. Open the 
 If you have filled in the email configurations (`application/config/email.php`), the page will read all settings from there. Otherwise, fill the email settings and press the button `Send email` to see if your settings are correct. The page will print detailed messages for both success and failed emails.
 
 
-### Enable backups
+## Enable backups
 
 The Metadata Editor will operate as a central metadata repository. For a production level installation, it is therefore essential that you implement a proper backup system, with automatic backups as appropriate.
 
