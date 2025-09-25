@@ -6,6 +6,17 @@ To support these objectives, the installer package includes the NADA cataloguing
 
 As a web-based solution, the installation and operation of the application on a desktop computer differs from typical software deployments. Installation requires extracting the application and associated materials into a dedicated folder allowing running executable files. Subsequently, the application is accessed by using the desktop computer as a local host for the web interface.
 
+::: info eLearning Sandbox 
+
+If you cannot install the Metadata Editor on your desktop, you can still practice using the **online eLearning Sandbox**:  
+[https://dev.ihsn.org/metadata-editor-elearning](https://dev.ihsn.org/metadata-editor-elearning)
+
+To access, please register using your email address and activate your account to use the system.
+
+⚠️ The sandbox is for **training purposes only** — please do not upload sensitive or production data.
+
+:::
+
 ## System Requirements
 
 ### Operating System and Hardware Requirements
