@@ -220,7 +220,7 @@ In the **Templates** frame, select the template you want to use to document the 
 
 We recommend using the default template, which combines INSPIRE, GEMINI, and gfeature catalog metadata elements.
 
-![image](ME_UG_v1-0-0_documenting_geographic_recommended_template.png)
+![image](img/ME_UG_v1-0-0_documenting_geographic_recommended_template.png)
 
 > Switching from one template to another will not impact the metadata that has already been entered; no information will be deleted from the metadata.
 
@@ -238,25 +238,25 @@ The Metadata Editor allows you to extract metadata contained in geographic datas
 To extract information from data files:
 - Click on `Feature catalogue / Features` in the navigation bar. The data import page will be displayed. Click `IMPORT FILES`.
 
-![image](ME_UG_v1-0-0_documenting_geographic_feature_import.png)
+![image](img/ME_UG_v1-0-0_documenting_geographic_feature_import.png)
 
 Select the data file(s) to be imported. In the example below, we import a shape file downloaded from the Humanitarian Data Exchange platform (https://data.humdata.org/dataset/outline-of-camps-sites-of-rohingya-refugees-in-cox-s-bazar-bangladesh).
 
-![image](ME_UG_v1-0-0_documenting_geographic_import_shape_HDX.png)
+![image](img/ME_UG_v1-0-0_documenting_geographic_import_shape_HDX.png)
 
 Click `IMPORT FILES`. If successful, you will see the list of imported files.
 
-![image](ME_UG_v1-0-0_documenting_geographic_import_shape_success.png)
+![image](img/ME_UG_v1-0-0_documenting_geographic_import_shape_success.png)
 
 The metadata that will be extracted will be automatically entered in the relevant metadata elements. What can be extracted depends on the data file type (vector vs raster) and format, and on what the data producer will have included in the data files. 
 
 In the navigation bar, click on the data file name. You will see the automatically-extracted bounding box, with information on the coordinate reference system. 
 
-![image](ME_UG_v1-0-0_documenting_geographic_feature_imported1.png)
+![image](img/ME_UG_v1-0-0_documenting_geographic_feature_imported1.png)
 
 Click on `Charateristics` for the data file, and you will see more information extracted from the data file. For vector datasets (like a Shape file), this will include the list of variables (feature characteristics) included in the data. The system will automatically extract summary statistics, and a list of values for the categorical variables. If the values are only available in the form of codes in the data file, you have the option to add value labels corresponding to the codes. You also have the option to provide a description (definition) of each variable. This is highly recommended when the characteristic has a name that is not fully explicit.
 
-![image](ME_UG_v1-0-0_documenting_geographic_feature_imported2.png)
+![image](img/ME_UG_v1-0-0_documenting_geographic_feature_imported2.png)
 
 
 ### Enter additional metadata
