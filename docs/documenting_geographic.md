@@ -143,8 +143,6 @@ See:
 
 This section describes how to document a geographic dataset (vector or raster) using the Metadata Editor. Documenting a data service follows the exact same principles, except that the option to extract metadata from data files does not apply when documenting a data service.
 
-The metadata template provided with the Metadata Editor identifies metadata elements that are specific to vector or raster datasets, or to data services.
-
 
 ### Prepare your materials
 
@@ -220,6 +218,10 @@ The first step in documenting a dataset is to create a new project. You do that 
 
 In the **Templates** frame, select the template you want to use to document the dataset. A default template is proposed; no action is needed if you want to use that template. Otherwise, switch to another template by clicking on the template name. Note that you can at any time change the template used for the documentation of a project. The selected template will determine what you see in the navigation tree and in the metadata entry pages. 
 
+We recommend using the default template, which combines INSPIRE, GEMINI, and gfeature catalog metadata elements.
+
+![image](ME_UG_v1-0-0_documenting_geographic_recommended_template.png)
+
 > Switching from one template to another will not impact the metadata that has already been entered; no information will be deleted from the metadata.
 
 Once a project has been created, you can import the data files (if available) and start documenting the dataset. 
@@ -227,25 +229,43 @@ Once a project has been created, you can import the data files (if available) an
 
 ### Extract metadata from data files 
 
+NOTE: This metadata extraction feature was introduced in version 1.1 of the Metadata Editor. It is not available in version 1.0. It makes use of an open-source Python library developed by the World Bank. See https://github.com/worldbank/geometadatatools. 
+
 The Metadata Editor allows you to extract metadata contained in geographic datasets. The following formats are supported:
 - Vector datasets: GeoJSON, Shapefile (SHP), KML, GPKG, GDB
 - Raster datasets: NetCDF (NC), geoTIF, BIL, ASCII (XYZ), GeoPDF (PDF), JPG, GIF, ADF, OVR
 
 To extract information from data files:
-- Click on DATA in the navigation bar. The data import page will be displayed. Select the data file(s) to be imported, then click `IMPORT`.  
+- Click on `Feature catalogue / Features` in the navigation bar. The data import page will be displayed. Click `IMPORT FILES`.
 
-The metadata that will be extracted will be automatically entered in the relevant metadata elements. What can be extracted depends on the data format, and on what the data producer may have included in the data files. Typically, the following metadata will be extracted: Filename, Bounding boxes, Reference system, Features (for vector datasets), Bands, and more.
+![image](ME_UG_v1-0-0_documenting_geographic_feature_import.png)
 
-NOTE: This metadata extraction feature was introduced in version 1.1 of the Metadata Editor. It is not available in version 1.0. It makes use of an open-source Python library developed by the World Bank. See https://github.com/worldbank/geometadatatools. 
+Select the data file(s) to be imported. In the example below, we import a shape file downloaded from the Humanitarian Data Exchange platform (https://data.humdata.org/dataset/outline-of-camps-sites-of-rohingya-refugees-in-cox-s-bazar-bangladesh).
+
+![image](ME_UG_v1-0-0_documenting_geographic_import_shape_HDX.png)
+
+Click `IMPORT FILES`. If successful, you will see the list of imported files.
+
+![image](ME_UG_v1-0-0_documenting_geographic_import_shape_success.png)
+
+The metadata that will be extracted will be automatically entered in the relevant metadata elements. What can be extracted depends on the data file type (vector vs raster) and format, and on what the data producer will have included in the data files. 
+
+In the navigation bar, click on the data file name. You will see the automatically-extracted bounding box, with information on the coordinate reference system. 
+
+![image](ME_UG_v1-0-0_documenting_geographic_feature_imported1.png)
+
+Click on `Charateristics` for the data file, and you will see more information extracted from the data file. For vector datasets (like a Shape file), this will include the list of variables (feature characteristics) included in the data. The system will automatically extract summary statistics, and a list of values for the categorical variables. If the values are only available in the form of codes in the data file, you have the option to add value labels corresponding to the codes. You also have the option to provide a description (definition) of each variable. This is highly recommended when the characteristic has a name that is not fully explicit.
+
+![image](ME_UG_v1-0-0_documenting_geographic_feature_imported2.png)
 
 
 ### Enter additional metadata
 
-We describe below the metadata elements included in the recommended INSPIRE + GEMINI + ADDITIONAL ELEMENTS template. This is only a subset of the elements contained in the ISO 19139. If you developed or imported a different, more comprehensive template, consult the description of metadata elements provided by the ISO 19139 documentation.
+We describe below the metadata elements included in the recommended INSPIRE + GEMINI + ADDITIONAL ELEMENTS template. This is only a subset of the elements contained in the ISO 19100. If you developed or imported a different, more comprehensive template, consult the description of metadata elements provided by the ISO 19100 documentation.
 
 **DOCUMENT DESCRIPTION**
 
-This section is not specific to geographic datasets. It corresponds to the *Document description* section of the DDI Codebook metadata standard (for microdata) and to the *Information on metadata* section in other metadata standards and schemas. This section contains metadata on the metadata, structured in a format consistent across metadata standards supported by the Metadata Editor. The content of this section is maintly intended to be used by catalog administrators, and will not be exported to ISO 19139 metadata files. 
+This section is not specific to geographic datasets. It corresponds to the *Document description* section of the DDI Codebook metadata standard (for microdata) and to the *Information on metadata* section in other metadata standards and schemas. This section contains metadata on the metadata, structured in a format consistent across metadata standards supported by the Metadata Editor. The content of this section is maintly intended to be used by catalog administrators, and will not be exported to ISO 19100 metadata files. 
 
 **DESCRIPTION**
 
@@ -253,7 +273,7 @@ This section is not specific to geographic datasets. It corresponds to the *Docu
 
 - **`Hierarchy level`** This is the type of resource being described by the metadata and it is filled in with a value from a classification of the resource based on its scope. The choice of Resource Type will be probably the first decision made by the user and it will define the metadata elements that should be filled.
 
-   The hierarchy level defines the scope of the resource. It indicates whether the resource is a collection, a dataset, a series, a service, or another type of resource. The ISO 19139 provides a controlled vocabulary for this element. It is recommended but not mandatory to make use of it. The most relevant levels for the purpose of cataloguing geographic data and services are dataset (for both raster and vector data), service (a capability which a service provider entity makes available to a service user entity through a set of interfaces that define a behavior), and series. Series will be used when the data represent an ordered succession, in time or in space; this will typically apply to time series, but it can also be used to describe other types of series (e.g., a series of ocean water temperatures collected at a succession of depths). Note that:
+   The hierarchy level defines the scope of the resource. It indicates whether the resource is a collection, a dataset, a series, a service, or another type of resource. A controlled vocabulary is provided for this element. It is recommended but not mandatory to make use of it. The most relevant levels for the purpose of cataloguing geographic data and services are dataset (for both raster and vector data), service (a capability which a service provider entity makes available to a service user entity through a set of interfaces that define a behavior), and series. Series will be used when the data represent an ordered succession, in time or in space; this will typically apply to time series, but it can also be used to describe other types of series (e.g., a series of ocean water temperatures collected at a succession of depths). Note that:
    - dataset: is an identifiable data that can be accessed separately. A dataset can be a part of a whole (series) or a segregate resource.
    - series: is a collection of resources or related datasets that share the same product specification.
    - service: technologies providing availability and access to spatial information, for example, web map services, web feature services, web coverage services, web processing services, catalogue web services, etc.
