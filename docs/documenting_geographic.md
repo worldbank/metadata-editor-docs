@@ -2,31 +2,25 @@
 
 ## The ISO 19100 metadata standards 
 
-To make geographic information discoverable and to facilitate their dissemination and use, the ISO Technical Committee on Geographic Information/Geomatics (ISO/TC211) created a set of metadata standards to describe geographic **datasets** (ISO 19115-1 for vector datasets and ISO 19115-2 for raster datasets) and geographic **data services** (ISO 19119). 
+To make geographic information easier to find, share, and use, the ISO Technical Committee on Geographic Information/Geomatics (ISO/TC211) developed a series of metadata standards. These describe **geographic datasets**—ISO 19115-1 for vector datasets and ISO 19115-2 for raster datasets—and **geographic data services** (ISO 19119). An XML specification of ISO 19115 is provided as ISO 19139. These standards have served as the foundation for various initiatives aiming to improve how geographic information is documented and managed, such as the [Open Geospatial Consortium (OGC)](https://www.ogc.org/), the [US Federal Geographic Data Committee (FDGC)](https://www.fgdc.gov/), the [European INSPIRE directive](https://inspire.ec.europa.eu), and more recently, [Research Data Alliance (RDA)](https://rd-alliance.org/).
 
-The ISO 19115-2 provides the necessary metadata elements to describe the structure of raster data. The ISO 19115-1 standard does not provide all necessary metadata elements needed to describe the structure of vector datasets. The description of data structures for vector data (also referred to as *feature types*) is therefore often omitted. The ISO 19110 standard solves that issue, by providing the means to document the structure of vector datasets (column names and definitions, codes and value labels, measurement units, etc.), which will contribute to making the data more discoverable and usable.
+While the ISO 19115-1 standard includes many important metadata elements, it does not provide all the components required to describe the structure of vector datasets (the *features* themselves). The ISO 19110 standard complements ISO 19115 by enabling documentation of a *feature catalog*, which details the structure and content of vector data files.
 
-This set of standards, known as the ISO 19100 series, have been "unified" into a common XML specification (ISO 19139). 
-
-These standards served as the cornerstone of multiple initiatives to improve the documentation and management of geographic information such as the [Open Geospatial Consortium (OGC)](https://www.ogc.org/), the [US Federal Geographic Data Committee (FDGC)](https://www.fgdc.gov/), the [European INSPIRE directive](https://inspire.ec.europa.eu), or more recently the [Research Data Alliance (RDA)](https://rd-alliance.org/), among others.
-
-The ISO 19100 standards have been designed to cover the large scope of geographic information. The level of detail they provide goes beyond the needs of most data curators. What we use in the Metadata Editor is a subset of the standards, which focuses on what we consider as the most relevant metadata elements to describe and catalog geographic datasets and services. 
-
+Collectively known as the ISO 19100 series, these standards are designed to address the broad requirements of geographic information. Their level of detail exceeds what most data curators need. For this reason, the Metadata Editor uses only a subset of these standards, focusing on the key metadata elements necessary for describing and cataloging geographic datasets and services.
 
 ## Documenting geographic datasets, series, and services
 
-### Geographic datasets
+### Geographic datasets:  
 
 **Geographic datasets** Geographic datasets refers to the actual stored data about the Earth’s features, phenomena, or events. Geographic datasets "identify and depict geographic locations, boundaries and characteristics of features on the surface of the earth. Geographic datasets can be vector data (points, lines, polygons) or raster data (grids, pixels, imagery). They include geographic coordinates (e.g., latitude and longitude) and data associated to geographic locations (...)". (Source: https://www.fws.gov/gis/) The ISO 19115 standard defines the structure and content of the metadata to be used to document geographic datasets. The ISO 19115 standard is split into two parts covering:
 - ***vector data*** (ISO 19115-1), and 
 - ***raster data*** including imagery and gridded data (ISO 19115-2). 
-The elements of ISO 19115 are included in the XML specification ISO 19139.
 
 *Vector* and *raster* spatial datasets are built with different structures and formats. The following summarizes how these two categories differ and how they can be processed using the R software. The descriptions of vector and raster data provided in this chapter are adapted from:
    - https://gisgeography.com/spatial-data-types-vector-raster/
    - https://datacarpentry.org/organization-geospatial/02-intro-vector-data/index.html]
 
-#### Vector data 
+#### Vector data (ISO 19115-1) 
 
 Vector data are comprised of **points**, **lines**, and **polygons** (areas). 
 
@@ -48,7 +42,7 @@ The figure below provides an example of vector data extracted from [Open Street 
 ![image](img/ME_UG_v1-0-0_documenting_geographic_vector_OSM.png)
 
 
-#### Raster data
+#### Raster data (ISO 19115-2)
 
 **Raster data** are made up of pixels, also referred to as *grid cells*. Satellite imagery and other remote sensing data are raster datasets. Grid cells in raster data are usually (but not necessarily) regularly-spaced and square. Data stored in a raster format is arranged in a grid without storing the coordinates of each cell (pixel). The coordinates of the corner points and the spacing of the grid can be used to calculate (rather than to store) the coordinates of each location in a grid.
 
@@ -110,46 +104,35 @@ Examples:
 - A collection of satellite images covering different tiles of a country.
 - A set of topographic maps produced at the same scale for different regions.
 
-In the metadata, some elements in the ISO 19139 are dedicated to provide information on series. You can describe the series itself at a general level. Then you can have metadata for individual datasets linked to that series. This helps avoid duplication — common information is stored once at the series level, and dataset-level metadata can focus on the differences. In ISO 19139 XML, you will often see fields like:
-- resourceScope set to series (to show you are describing a series, not a single dataset);
-- aggregationInfo to link datasets to their series or services.
+In the metadata standards, some elements are dedicated to provide information on series. You can describe the series itself at a general level. Then you can have metadata for individual datasets linked to that series. This helps avoid duplication — common information is stored once at the series level, and dataset-level metadata can focus on the differences. In ISO 19139, you may see fields like:
+- *resourceScope* set to series (to show you are describing a series, not a single dataset);
+- *aggregationInfo* to link datasets to their series or services.
 
 
-### Geographic data services
+### Geographic data services (ISO 19119)
 
 **Geographic data services** refers to  operations or set of operations that allows users to access, manipulate, transform, analyze, or visualize geographic data over a network or system. It’s not the data itself — it’s the functionality provided to interact with the data. In other words, a geographic data service is something you can call or use to work with geographic data without downloading the full dataset first. Geographic data servies are documented using metadata elements from the ISO 19119 metadata standard. The elements of ISO 19119 are included in the XML specification ISO 19139.
 
 
-## Unified metadata specification - The ISO/TS 19139 standard
+## Metadata templates for the practical implementation of ISO 19100
 
-The three metadata standards previously described - ISO 19115 for vector and raster datasets, ISO 19110 for vector data structures, and ISO 19119 for data services, provide a set of concepts and definitions useful to describe the geographic information. To facilitate their practical implementation, a digital specification, which defines how this information is stored and organized in an electronic metadata file, is required. The ISO/TS 19139 standard, an XML specification of the ISO 19115/10110/19119/, was created for that purpose.
-
-The ISO/TS 19139 is a standard used worldwide to describe geographic information. It is the backbone for the implementation of [INSPIRE](https://inspire.ec.europa.eu/) dataset and service metadata in the European Union. It is supported by a wide range of tools, including desktop applications like [Quantum GIS](https://qgis.org/en/site/), [ESRI ArcGIS](https://www.arcgis.com/index.html)), and OGC-compliant metadata catalogs (e.g., [GeoNetwork](https://geonetwork-opensource.org/)) and geographic servers (e.g., [GeoServer](http://geoserver.org/)). 
-
-ISO 19139-compliant metadata can be generated and edited using specialized metadata editors such as [CatMDEdit](http://catmdedit.sourceforge.net/) or [QSphere](https://www.fgdc.gov/organization/working-groups-subcommittees/mwg/iso-metadata-editors-registry/qsphere), or using programmatic tools like Java Apache SIS or the R packages [geometa](https://cran.r-project.org/web/packages/geometa/index.html) and [geoflow](https://github.com/eblondel/geoflow), among others.
-
-The Metadata Editor uses the ISO 19139 to provide a solution compatible with the ISO 19115, ISO 19110, and ISO 19119 standards.
-
-
-## Metadata templates or profiles for the practical implementation of ISO 19139
-
-The ISO 19139 specification is complex. To enable and simplify its use in the Metadata Editor, we produced a JSON version of (part of) the standard. We selected the elements we considered most relevant for our purpose, and organized them into the JSON schema described below. For data curators with limited expertise in XML and geographic data documentation, this JSON schema will make the production of metadata compliant with the ISO 19139 standard easier. 
+The ISO 19100 standards are complex. To enable and simplify their use in the Metadata Editor, we produced a JSON version of (part of) the standard. We selected the elements we considered most relevant for our purpose, and organized them into the JSON schema described below. For data curators with limited expertise in XML and geographic data documentation, this JSON schema will make the production of metadata compliant with the ISO 19100 standards easier. 
 
 Some organizations have sought to make the use of ISO 19139 manageable, by defining *templates* or *profiles* that consist of subsets. This includes the INSPIRE set of elements defined by the European Union, and the GEMINI set of elements defined by the United Kingdom.
 
-The Metadata Editor is also provided with recommended templates that only contain the elements of the ISO 19139 that are considered the most useful for the documentation of geographic datasets and services. The template provided in the Metadata Editor contains all elements from the INSPIRE and GEMINI profiles, and a few more.
+The Metadata Editor is provided with a template that contains the elements considered the most useful for the documentation of geographic datasets and services. This template contains the elements from the INSPIRE and GEMINI profiles, and a set of metadata elements from the ISO 19110 for documenting features of datasets.
 
 
 ### INSPIRE - Infrastructure for Spatial Information in Europe
 
-The EU INSPIRE Directive (Infrastructure for Spatial Information in the European Community), adopted in 2007, establishes a legal framework for the creation of a unified spatial data infrastructure across the European Union. Its goal is to enable the sharing, discovery, and use of interoperable spatial data among public authorities, policymakers, and the public, particularly to support environmental policies and activities that may impact the environment. INSPIRE requires EU Member States to document, harmonize, and provide access to spatial datasets and services related to 34 environmental themes, including land use, transport networks, and biodiversity. The Directive mandates the use of standardized metadata (based on ISO 19115 and ISO 19139), common data specifications, and network services (discovery, view, download, etc.), ensuring that spatial information is easily searchable and accessible across borders and administrative levels.
+The EU INSPIRE Directive (Infrastructure for Spatial Information in the European Community), adopted in 2007, establishes a legal framework for the creation of a unified spatial data infrastructure across the European Union. Its goal is to enable the sharing, discovery, and use of interoperable spatial data among public authorities, policymakers, and the public, particularly to support environmental policies and activities that may impact the environment. INSPIRE requires EU Member States to document, harmonize, and provide access to spatial datasets and services related to 34 environmental themes, including land use, transport networks, and biodiversity. The Directive mandates the use of standardized metadata (based on ISO 19115), common data specifications, and network services (discovery, view, download, etc.), ensuring that spatial information is easily searchable and accessible across borders and administrative levels.
 
 See the INSPIRE knowledge base at https://knowledge-base.inspire.ec.europa.eu/index_en
 
 
 ### UK GEMINI 2.3
 
-The UK GEMINI (GEo-spatial Metadata INteroperability Initiative) standard is the United Kingdom's national metadata standard for describing geographic datasets and services. Developed by the Association for Geographic Information (AGI) and maintained by the UK Metadata Working Group, GEMINI ensures consistent and interoperable metadata across UK public sector organizations. It is based on and fully compatible with international standards ISO 19115 for geographic information and ISO 19139 for XML encoding. GEMINI supports the requirements of the UK Location Programme and the European INSPIRE Directive, enabling efficient discovery, access, and use of spatial data through standardized metadata elements such as dataset identification, spatial and temporal extent, quality, access constraints, and responsible organizations.
+The UK GEMINI (GEo-spatial Metadata INteroperability Initiative) standard is the United Kingdom's national metadata standard for describing geographic datasets and services. Developed by the Association for Geographic Information (AGI) and maintained by the UK Metadata Working Group, GEMINI ensures consistent and interoperable metadata across UK public sector organizations. It is based on and fully compatible with international standards ISO 19115. GEMINI supports the requirements of the UK Location Programme and the European INSPIRE Directive, enabling efficient discovery, access, and use of spatial data through standardized metadata elements such as dataset identification, spatial and temporal extent, quality, access constraints, and responsible organizations.
 
 See:
 - https://guidance.data.gov.uk/publish_and_manage_data/harvest_or_add_data/harvest_data/gemini/#gemini-and-iso-19139-metadata
@@ -242,7 +225,7 @@ In the **Templates** frame, select the template you want to use to document the 
 Once a project has been created, you can import the data files (if available) and start documenting the dataset. 
 
 
-### Extract metadata from data files [under development - to be available in version 1.1 of the application]
+### Extract metadata from data files 
 
 The Metadata Editor allows you to extract metadata contained in geographic datasets. The following formats are supported:
 - Vector datasets: GeoJSON, Shapefile (SHP), KML, GPKG, GDB
@@ -252,6 +235,8 @@ To extract information from data files:
 - Click on DATA in the navigation bar. The data import page will be displayed. Select the data file(s) to be imported, then click `IMPORT`.  
 
 The metadata that will be extracted will be automatically entered in the relevant metadata elements. What can be extracted depends on the data format, and on what the data producer may have included in the data files. Typically, the following metadata will be extracted: Filename, Bounding boxes, Reference system, Features (for vector datasets), Bands, and more.
+
+NOTE: This metadata extraction feature was introduced in version 1.1 of the Metadata Editor. It is not available in version 1.0. It makes use of an open-source Python library developed by the World Bank. See https://github.com/worldbank/geometadatatools. 
 
 
 ### Enter additional metadata
