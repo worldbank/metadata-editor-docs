@@ -229,7 +229,7 @@ Once a project has been created, you can import the data files (if available) an
 
 ### Extract metadata from data files (import data)
 
-NOTE: This metadata extraction feature was introduced in version 1.1 of the Metadata Editor. It is not available in version 1.0. It makes use of an open-source Python library developed by the World Bank. See https://github.com/worldbank/geometadatatools. 
+> NOTE: This metadata extraction feature was introduced in version 1.1 of the Metadata Editor. It is not available in version 1.0. It makes use of an open-source Python library developed by the World Bank. See https://github.com/worldbank/geometadatatools. 
 
 The Metadata Editor allows you to extract metadata contained in geographic datasets. The following formats are supported:
 - Vector datasets: GeoJSON, Shapefile (SHP), KML, GPKG, GDB
