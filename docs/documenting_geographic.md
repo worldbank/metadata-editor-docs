@@ -227,7 +227,7 @@ We recommend using the default template, which combines INSPIRE, GEMINI, and gfe
 Once a project has been created, you can import the data files (if available) and start documenting the dataset. 
 
 
-### Extract metadata from data files 
+### Extract metadata from data files (import data)
 
 NOTE: This metadata extraction feature was introduced in version 1.1 of the Metadata Editor. It is not available in version 1.0. It makes use of an open-source Python library developed by the World Bank. See https://github.com/worldbank/geometadatatools. 
 
@@ -253,6 +253,8 @@ The metadata that will be extracted will be automatically entered in the relevan
 In the navigation bar, click on the data file name. You will see the automatically-extracted bounding box, with information on the coordinate reference system. 
 
 ![image](img/ME_UG_v1-0-0_documenting_geographic_feature_imported1.png)
+
+![image](img/ME_UG_v1-0-0_documenting_geographic_feature_imported1a.png)
 
 Click on `Charateristics` for the data file, and you will see more information extracted from the data file. For vector datasets (like a Shape file), this will include the list of variables (feature characteristics) included in the data. The system will automatically extract summary statistics, and a list of values for the categorical variables. If the values are only available in the form of codes in the data file, you have the option to add value labels corresponding to the codes. You also have the option to provide a description (definition) of each variable. This is highly recommended when the characteristic has a name that is not fully explicit.
 
