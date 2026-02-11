@@ -31,6 +31,7 @@ export default defineConfig({
         items: [
           { text: 'Technical specifications', link: '/tech_technical_specifications' },
           { text: 'Installation', link: '/tech_installation' },
+          { text: 'Installation (Windows)', link: '/tech_installation_windows' },
           { text: 'Installation (Desktop)', link: '/tech_installation_desktop' },
           { text: 'Upgrading', link: '/tech_upgrading' }
           /*
