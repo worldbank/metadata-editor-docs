@@ -44,9 +44,9 @@ An API key is a unique, secret token that functions like a password. Each API ke
 
 API keys must be treated with the same level of security as passwords. Some keys grant powerful roles, such as administrator or editor, with the ability to add, modify, or delete content. If an API key is exposed, anyone who finds it can perform actions using your identity and permissions. It is critical to keep API keys confidential and avoid sharing them in any form where others might see, copy, or store them.
 
-  - Keep your API key secret. Treat your API key like a password. Do not share it or expose it in public repositories, scripts, or notebooks.
-  - Never hard-code keys directly in scripts or notebooks. Code is often shared, versioned, and reviewed, and embedding keys creates a high risk of accidental disclosure.
-  - If you believe your API key has been compromised. For example, it was accidentally committed to a repository, shared in a message, or appeared in a screenshot—immediately revoke the key and issue a new one. Notify your system administrator or security team so usage logs can be reviewed for unauthorized activity. Rapid revocation and replacement are essential to limit the window of exposure and protect the integrity of your metadata.
+  - **Keep your API key secret**. Treat your API key like a password. Do not share it or expose it in public repositories, scripts, or notebooks.
+  - **Never hard-code keys directly in scripts or notebooks**. Code is often shared, versioned, and reviewed, and embedding keys creates a high risk of accidental disclosure.
+  - **What to do if you believe your API key has been compromised**. For example, it was accidentally committed to a repository, shared in a message, or appeared in a screenshot—immediately revoke the key and issue a new one. Notify your system administrator or security team so usage logs can be reviewed for unauthorized activity. Rapid revocation and replacement are essential to limit the window of exposure and protect the integrity of your metadata.
     
 **Recommended Practices for Securely Managing API Keys**
 
