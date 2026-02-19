@@ -91,20 +91,22 @@ Here are examples of use cases for the use of the Metadata Editor API:
 
 The Metadata Editor API can be used with any language that supports HTTP requests, such as R or Python commands. For example, the following commands will extract, return, and print a list of projects found in your Metadata Editor:
 
-```Python
-import requests
-API_KEY = "your_api_key_here"
-headers = {"X-API-Key": API_KEY}
-response = requests.get("https://your-metadata-editor.org/api/projects", headers=headers)
-print(response.json())
-```
-
+In R:
 ```r
 library(httr)
 api_key <- "your_api_key_here"
 url <- "https://your-metadata-editor.org/api/projects"
 res <- GET(url, add_headers(`X-API-Key` = api_key))
 content(res, "parsed")
+```
+
+In Python:
+```Python
+import requests
+API_KEY = "your_api_key_here"
+headers = {"X-API-Key": API_KEY}
+response = requests.get("https://your-metadata-editor.org/api/projects", headers=headers)
+print(response.json())
 ```
 
 To help users leverage the API without needing deep programming expertise, we developed specialized open-source packages for R and Python users. These packages are available on GitHub and provide a more accessible entry point to the API's capabilities.
