@@ -69,6 +69,7 @@ Interacting with the Metadata Editor programmatically unlocks significant opport
   2.	**Integration with Other Systems**: The API allows the Metadata Editor to become a central, connected component of your data ecosystem. You can link it to other tools and platforms. For example, when a new dataset is added to a database, a script can automatically call the Metadata Editor's API to create its corresponding metadata record.
   
   3.	**Two-Way Communication**: The API supports both reading and writing information.
+     
     - Extracting Information: Use the API to read, search, and export any metadata stored in the application. This is useful for generating reports, populating a public data catalog, or performing automated quality checks.
     - Posting and Editing Information: Use the API to create new records, update existing ones, or delete them. This enables programmatic maintenance and bulk updates, ensuring your metadata remains current.
 
