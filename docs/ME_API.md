@@ -137,13 +137,15 @@ The examples below show how MetadataEditR (or PyMetadataEditor) are used in comb
 
 We assume you have a PDF document (file “Doc01.PDF”) in a folder “C:\MyFolder”. You want to capture its cover page to be used as a thumbnail, generate core metadata for the document, and upload the metadata and the document in the Metadata Editor as a new project with ID = D001. 
 
+Using R:
+
 ```r
 
 # ------------------------------------------------------------------------------
 # Generate metadata for a PDF document and publish it in the Metadata Editor
 # ------------------------------------------------------------------------------
 
-# Load the required packages
+# Load the required package
 library(metadataeditr)
 
 # Set the default folder
@@ -205,9 +207,75 @@ resources_add(
 
 ```
 
-AFter running the script, the project will be in your Metadata Editor where you can further edit it.
+In Python:
+```Python
+
+...
+
+```
+
+Atter running the script, the project will be in your Metadata Editor where you can further edit it.
 
 ![image](img/ME_UG_using_R_API_code_example_01.png)
 
- 
 
+### Example 2: Editing the title of some projects
+
+We assume that your Metadata Editor contains projects for Demographic and Health Surveys from multiple countries. You noticed that in some cases, the acronym "DHS" was included in the title, and in other cases not. You want to be consistent and add the acronym when not included in the title. To do that, you will extract a list of all projects (ID and title), then conditionally edit the title. 
+
+Using R:
+
+```r
+
+# Load the required package
+library(metadataeditr)
+
+# Set the credentials for accessing the Metadata Editor (we assume the API key provides admin privileges).
+my_keys <- read.csv("C:/WBG/vault/APIkeys.csv", header = F, stringsAsFactors = F)
+set_api_key(my_keys[2,1])
+set_api_url("https://myurl.org/editor/index.php/api")
+
+# Get a list of all projects (ID and title)
+
+# Edit the title if needed
+for(project in projects) {
+if !"(DHS) "%in% title: replace "Demographic and Health Survey with "Demographic and Health Survey (DHS)"
+push
+}
+
+```
+
+Using Python:
+
+```r
+
+```
+
+### Example 3: Extract time series and related metadata from an Excel file, and publish in the Metadata Editor
+
+You have an Excel file with time series data for multiple indicators in one sheet, and the related metadata in another sheet. You want to extract the data, format it in a suitable format for publishing in the Metadata Editor and NADA, create the descriptive and structural metadata, and publish it in the Metadata Editor (creating one project per indicator).
+
+Using R:
+
+```r
+
+# Load the required package
+library(metadataeditr)
+library(readxls)
+
+# Set the credentials for accessing the Metadata Editor (we assume the API key provides admin privileges).
+my_keys <- read.csv("C:/WBG/vault/APIkeys.csv", header = F, stringsAsFactors = F)
+set_api_key(my_keys[2,1])
+set_api_url("https://myurl.org/editor/index.php/api")
+
+# Read the two sheets in the Excel file
+
+# Convert data from wide to long format
+
+# Get a list of indicators and loop
+
+  # Generate standard-compliant metadata
+
+  # Publish in the Metadata Editor 
+
+```
