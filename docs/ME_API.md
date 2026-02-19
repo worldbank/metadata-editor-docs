@@ -249,6 +249,8 @@ Using Python:
 
 ```r
 
+...
+
 ```
 
 ### Example 3: Extract time series and related metadata from an Excel file, and publish in the Metadata Editor
