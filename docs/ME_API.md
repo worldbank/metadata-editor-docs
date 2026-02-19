@@ -205,7 +205,7 @@ resources_add(
 
 AFter running the script, the project will be in your Metadata Editor where you can further edit it.
 
-![image](img/ME_UG_using_python_API.png)
+![image](img/ME_UG_using_R_API_code_example_01.png)
 
  
 
