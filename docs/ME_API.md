@@ -247,7 +247,7 @@ push
 
 Using Python:
 
-```r
+```Python
 
 ...
 
@@ -261,23 +261,174 @@ Using R:
 
 ```r
 
-# Load the required package
+##### NOT TESTED YET ; MUST PROVIDE THE DATA FILE
+
+# ------------------------------------------------------------------------------
+# Extract data and metadata for 4 indicators from an Excel file, and publish 
+# as 4 projects in the Metadata Editor. The data are from the World Bank WDI
+# database (we selected 3 countries, 4 indicators for this example).
+# ------------------------------------------------------------------------------
+
+library(readxl)
+library(dplyr)
+library(tidyr)
+library(collapse)
+library(rlist)
 library(metadataeditr)
-library(readxls)
 
-# Set the credentials for accessing the Metadata Editor (we assume the API key provides admin privileges).
-my_keys <- read.csv("C:/WBG/vault/APIkeys.csv", header = F, stringsAsFactors = F)
-set_api_key(my_keys[2,1])
-set_api_url("https://myurl.org/editor/index.php/api")
+# Set the default directory
+setwd("C:/Users/WB147665/OneDrive - WBG/_OD/ANOMALY/WDI")
 
-# Read the two sheets in the Excel file
+# Enter API credentials and URLs for Metadata Editor 
+set_api_url("https://dev.ihsn.org/tot/editor/index.php/api")
+set_api_key(my_keys[31,1])
 
-# Convert data from wide to long format
+# Extract the data and metadata from the Excel file
+data <- read_xlsx("wdi_4_indicators.xlsx", sheet = "data")
+meta <- read_xlsx("wdi_4_indicators.xlsx", sheet = "metadata")
 
-# Get a list of indicators and loop
+# Replace "." with "_" in column names  
+names(data) <- gsub("\\.", "_", names(data))
+names(meta) <- gsub("\\.", "_", names(meta))
 
-  # Generate standard-compliant metadata
+# Extract a list of all indicators found in the WDI data file
+list_indicators <- unique(data$Indicator_Code)
 
-  # Publish in the Metadata Editor 
+# Reshape the WDI data from wide to long
+data <- data %>%
+  pivot_longer(cols = starts_with("X"), names_to = "Year",  values_to = "Value") %>%
+  mutate(Year = as.integer(sub("X", "", Year))) 
+
+# Loop through indicators; extract metadata and publish in Editor and NADA
+# ------------------------------------------------------------------------
+
+for(i in 1:length(list_indicators)) {
+  
+  print(paste0("Processing indicator ", i, " / ", length(list_indicators)))
+
+  idno <- list_indicators[i]
+  
+  # Extract the data for the selected indicator
+  df_sel <- data[data$Indicator_Code == idno, ] 
+
+  # Extract the time coverage (for the full dataset)
+  time_start <- min(df_sel$Year)
+  time_end <- max(df_sel$Year)
+  
+  # Extract indicator's geographic coverage for geo coverage and DSD 
+  geo_sel <- unique(df_sel[c("Country_Code", "Country_Name")]) 
+  list_geo1 <- unname(Map(function(code, name) list(code = code, name = name), 
+                          geo_sel$Country_Code, geo_sel$Country_Name))
+  list_geo2 <- lapply(list_geo1, function(el) {names(el) <- c("code", "label"); el})
+  
+  # Get the row number for the selected indicator in the metadata file 
+  iNo <- match(idno, meta$Indicator_Code)
+  
+  # Extract the notes/comments fromm the metadata file. We also drop empty or NA 
+  # elements from the list
+  list_notes = list(list(note = meta$Other_notes[iNo]),
+                    list(note = meta$Notes_from_original_source[iNo], type = "Notes from original source"),
+                    list(note = meta$General_comments[iNo], type = "General comments"))
+  list_notes <- Filter(function(x) {
+    !is.null(x$note) && !is.na(x$note) && nzchar(trimws(x$note))
+  }, list_notes)
+  
+  # Generate/extract URLs from the metadata file. We then drop empty or NA URLs 
+  # from the list
+  iurl <- paste0("https://data.worldbank.org/indicator/", idno)
+  list_links = list(list(description = "Indicator page in WB Database", uri = iurl),
+                    list(description = "Other web links", uri = meta$Other.web.links[iNo]))
+  list_links <- Filter(function(x) {
+    !is.null(x$uri) && !is.na(x$uri) && nzchar(trimws(x$uri))
+  }, list_links)
+  
+  # We create the data structure definition (we describe all data file columns).
+  # This structure will be embedded in the indicator metadata.
+  list_str <- list(
+    list(
+      name = "Country_Name",
+      label = "Country name",
+      data_type = "string",
+      column_type = "attribute"
+    ),
+    list(
+      name = "Country_Code",
+      label = "Country code (ISO ALPHA 3)",
+      data_type = "string",
+      column_type = "geography",
+      code_list = list_geo2
+    ),
+    list(
+      name = "Indicator_Name",
+      label = "Indicator name",
+      data_type = "string",
+      column_type = "indicator_name"
+    ),
+    list(
+      name = "Indicator_Code",
+      label = "Indicator identifier",
+      data_type = "string",
+      column_type = "indicator_id"
+    ),
+    list(
+      name = "Year",
+      label = "Year",
+      data_type = "string",
+      column_type = "time_period",
+      time_period_format = "YYYY"
+    ),
+    list(
+      name = "Value",
+      label = "Value",
+      data_type = "float",
+      column_type = "observation_value"
+    )
+  )
+  
+  # Generate a schema-compliant metadata object for the indicator
+  # Most components are extracted from the metadata file. Others were extracted
+  # from the data file. Columns in the metadata file are mapped to elements from 
+  # the metadata standard. The license is entered manually.
+  i_meta <- list(
+    metadata_information = list(
+      producers = list(list(name = "John Doe")),
+      prod_date = Sys.Date()
+    ),
+    series_description = list(   
+      idno = list_indicators[i],
+      name = df_doc$Indicator.Name[iNo],
+      authoring_entity = list(list(name = "World Bank, Development Data Group")),
+      measurement_unit = df_doc$Unit.of.measure[iNo],
+      time_periods = list(list(start = time_start, end = time_end)),
+      periodicity = df_doc$Periodicity[iNo],
+      base_period = df_doc$Base.Period[iNo],
+      definition_long = df_doc$Long.definition[iNo],
+      methodology = df_doc$Statistical.concept.and.methodology[iNo], 
+      aggregation_method = df_doc$Aggregation.method[iNo],
+      limitation = df_doc$Limitations.and.exceptions[iNo],
+      relevance = df_doc$Development.relevance[iNo],
+      ref_country = list_geo1,
+      notes = list_notes,
+      links = list_links,
+      sources = list(list(name = df_doc$Source[iNo])),
+      license = list(
+        list(name = "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+             uri = "https://creativecommons.org/licenses/by/4.0/")),
+      series_groups = list(list(name = df_doc$Topic[iNo]))
+    ),
+    data_structure = list_str,
+    data_notes = list_data_notes
+  )
+  
+  # Publish the metadata to the Metadata Editor 
+  metadataeditr::add_project(
+    idno = idno, 
+    type = "indicator", 
+    metadata = i_meta, 
+    overwrite = TRUE,
+    thumbnail = thumbnail
+  )
+  
+}  
 
 ```
