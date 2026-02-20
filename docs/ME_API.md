@@ -271,6 +271,7 @@ Using R:
 
 ##### CODE NOT TESTED YET ; PROVIDE A LINK TO THE DATA FILE
 
+
 # ------------------------------------------------------------------------------
 # Extract data and metadata for 4 indicators from an Excel file, and publish 
 # as 4 projects in the Metadata Editor. The data are from the World Bank WDI
@@ -285,17 +286,19 @@ library(rlist)
 library(metadataeditr)
 
 # Set the default directory
+#setwd("C:/MyFolder")
 setwd("C:/Users/WB147665/OneDrive - WBG/_OD/ANOMALY/WDI")
 
 # Enter API credentials and URLs for Metadata Editor 
-set_api_url("https://dev.ihsn.org/tot/editor/index.php/api")
-set_api_key(my_keys[31,1])
+my_keys <- read.csv("C:/WBG/vault/APIkeys.csv", header = F, stringsAsFactors = F)
+set_api_key(my_keys[2,1])
+set_api_url("https://myurl.org/editor/index.php/api")
 
 # Extract the data and metadata from the Excel file
 data <- read_xlsx("wdi_4_indicators.xlsx", sheet = "data")
 meta <- read_xlsx("wdi_4_indicators.xlsx", sheet = "metadata")
 
-# Replace "." with "_" in column names  
+# Replace "." with "_" in column names (some applications do not accept "." in variable names)  
 names(data) <- gsub("\\.", "_", names(data))
 names(meta) <- gsub("\\.", "_", names(meta))
 
@@ -307,7 +310,8 @@ data <- data %>%
   pivot_longer(cols = starts_with("X"), names_to = "Year",  values_to = "Value") %>%
   mutate(Year = as.integer(sub("X", "", Year))) 
 
-# Loop through indicators; extract metadata and publish in Editor and NADA
+
+# Loop through indicators; extract metadata and publish in Metadata Editor
 # ------------------------------------------------------------------------
 
 for(i in 1:length(list_indicators)) {
@@ -316,8 +320,9 @@ for(i in 1:length(list_indicators)) {
 
   idno <- list_indicators[i]
   
-  # Extract the data for the selected indicator
+  # Extract the data for the selected indicator and save as CSV file
   df_sel <- data[data$Indicator_Code == idno, ] 
+  write.csv(df_sel, .........    #################################################################
 
   # Extract the time coverage (for the full dataset)
   time_start <- min(df_sel$Year)
@@ -436,7 +441,10 @@ for(i in 1:length(list_indicators)) {
     overwrite = TRUE,
     thumbnail = thumbnail
   )
+
+  # Publish the data (CSV) to the Metadata Editor 
   
 }  
+
 
 ```
