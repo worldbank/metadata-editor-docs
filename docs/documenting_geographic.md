@@ -256,7 +256,7 @@ In the navigation bar, click on the data file name. You will see the automatical
 
 ![image](img/ME_UG_v1-0-0_documenting_geographic_feature_imported1a.png)
 
-Click on `Charateristics` for the data file, and you will see more information extracted from the data file. For vector datasets (like a Shape file), this will include the list of variables (feature characteristics) included in the data. The system will automatically extract summary statistics, and a list of values for the categorical variables. If the values are only available in the form of codes in the data file, you have the option to add value labels corresponding to the codes. You also have the option to provide a description (definition) of each variable. This is highly recommended when the characteristic has a name that is not fully explicit.
+Click on `Characteristics` for the data file, and you will see more information extracted from the data file. For vector datasets (like a Shape file), this will include the list of variables (feature characteristics) included in the data. The system will automatically extract summary statistics, and a list of values for the categorical variables. If the values are only available in the form of codes in the data file, you have the option to add value labels corresponding to the codes. You also have the option to provide a description (definition) of each variable. This is highly recommended when the characteristic has a name that is not fully explicit.
 
 ![image](img/ME_UG_v1-0-0_documenting_geographic_feature_imported2.png)
 
@@ -265,7 +265,7 @@ Click on `Charateristics` for the data file, and you will see more information e
 
 We describe below the metadata elements included in the recommended INSPIRE + GEMINI + ADDITIONAL ELEMENTS template. This is only a subset of the elements contained in the ISO 19100. If you developed or imported a different, more comprehensive template, consult the description of metadata elements provided by the ISO 19100 documentation.
 
-**DOCUMENT DESCRIPTION**
+**METADATA INFORMATION**
 
 This section is not specific to geographic datasets. It corresponds to the *Document description* section of the DDI Codebook metadata standard (for microdata) and to the *Information on metadata* section in other metadata standards and schemas. This section contains metadata on the metadata, structured in a format consistent across metadata standards supported by the Metadata Editor. The content of this section is maintly intended to be used by catalog administrators, and will not be exported to ISO 19100 metadata files. 
 
