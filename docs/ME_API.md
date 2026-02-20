@@ -261,7 +261,7 @@ The data in the Excel file looks like this. It contains one row per series, with
 
 ![image](img/ME_UG_API_Code_Example_Excel_File_Data.jpg)
 
-The metadata is provided in one row per indicator. It is provided in columns named Indicator.Code, Topic, Indicator.Name, Long.definition, Unit.of.measure, Periodicity, Other.notes, Notes.from.original.source, General.comments, Source, Statistical.concept.and.methodology, Development.relevance, Related.source.links, and Other.web.links. These columns will have to be mapped to the corresponding metadata elements in the metadata standard (see https://worldbank.github.io/metadata-schemas/#tag/Timeseries).
+The metadata is provided in one row per indicator. It is provided in columns named Indicator.Code, Topic, Indicator.Name, Long.definition, Unit.of.measure, Periodicity, Other.notes, Notes.from.original.source, General.comments, Source, Statistical.concept.and.methodology, Aggregation.method, Development.relevance, Related.source.links, and Other.web.links. These columns will have to be mapped to the corresponding metadata elements in the metadata standard (see https://worldbank.github.io/metadata-schemas/#tag/Timeseries).
 
 ![image](img/ME_UG_API_Code_Example_Excel_File_Metadata.jpg)
 
