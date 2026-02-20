@@ -257,11 +257,19 @@ Using Python:
 
 You have an Excel file with time series data for multiple indicators in one sheet, and the related metadata in another sheet. You want to extract the data, format it in a suitable format for publishing in the Metadata Editor and NADA, create the descriptive and structural metadata, and publish it in the Metadata Editor (creating one project per indicator).
 
+The data in the Excel file looks like this. It contains one row per series, with years in columns X1960 to X2023.
+
+![image](img/ME_UG_API_Code_Example_Excel_File_Data.jpg)
+
+The metadata is provided in one row per indicator. It is provided in columns named Indicator.Code, Topic, Indicator.Name, Long.definition, Unit.of.measure, Periodicity, Other.notes, Notes.from.original.source, General.comments, Source, Statistical.concept.and.methodology, Development.relevance, Related.source.links, and Other.web.links. These columns will have to be mapped to the corresponding metadata elements in the metadata standard (see https://worldbank.github.io/metadata-schemas/#tag/Timeseries).
+
+![image](img/ME_UG_API_Code_Example_Excel_File_Metadata.jpg)
+
 Using R:
 
 ```r
 
-##### NOT TESTED YET ; MUST PROVIDE THE DATA FILE
+##### CODE NOT TESTED YET ; PROVIDE A LINK TO THE DATA FILE
 
 # ------------------------------------------------------------------------------
 # Extract data and metadata for 4 indicators from an Excel file, and publish 
