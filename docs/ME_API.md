@@ -155,7 +155,7 @@ setwd("C:/MyFolder")
 # Enter the URL to your Metadata Editor, and provide your API key.
 # Here we assume that the API key is stored in cell (2,1) of a (hidden) CSV file.
 # Reminder: Protect your API key! Never enter it directly in a script.
-my_keys <- read.csv("C:/WBG/vault/APIkeys.csv", header = F, stringsAsFactors = F)
+my_keys <- read.csv("C:/Myvault/APIkeys.csv", header = F, stringsAsFactors = F)
 set_api_key(my_keys[2,1])
 set_api_url("https://myurl.org/editor/index.php/api")
 
@@ -269,13 +269,11 @@ Using R:
 
 ```r
 
-##### CODE NOT TESTED YET ; PROVIDE A LINK TO THE DATA FILE
-
 
 # ------------------------------------------------------------------------------
 # Extract data and metadata for 4 indicators from an Excel file, and publish 
 # as 4 projects in the Metadata Editor. The data are from the World Bank WDI
-# database (we selected 3 countries, 4 indicators for this example).
+# database (we selected 4 indicators and 3 countries for this example).
 # ------------------------------------------------------------------------------
 
 library(readxl)
@@ -287,10 +285,10 @@ library(metadataeditr)
 
 # Set the default directory
 #setwd("C:/MyFolder")
-setwd("C:/Users/WB147665/OneDrive - WBG/_OD/ANOMALY/WDI")
+thumbnail = "wdi_img.jpg"
 
 # Enter API credentials and URLs for Metadata Editor 
-my_keys <- read.csv("C:/WBG/vault/APIkeys.csv", header = F, stringsAsFactors = F)
+my_keys <- read.csv("C:/Myvault/APIkeys.csv", header = F, stringsAsFactors = F)
 set_api_key(my_keys[2,1])
 set_api_url("https://myurl.org/editor/index.php/api")
 
@@ -298,9 +296,9 @@ set_api_url("https://myurl.org/editor/index.php/api")
 data <- read_xlsx("wdi_4_indicators.xlsx", sheet = "data")
 meta <- read_xlsx("wdi_4_indicators.xlsx", sheet = "metadata")
 
-# Replace "." with "_" in column names (some applications do not accept "." in variable names)  
+# Replace "." with "_" in column names. We do this because we will publish the 
+# data in databases; some databases do not accept "." in column names.  
 names(data) <- gsub("\\.", "_", names(data))
-names(meta) <- gsub("\\.", "_", names(meta))
 
 # Extract a list of all indicators found in the WDI data file
 list_indicators <- unique(data$Indicator_Code)
@@ -320,9 +318,9 @@ for(i in 1:length(list_indicators)) {
 
   idno <- list_indicators[i]
   
-  # Extract the data for the selected indicator and save as CSV file
+  # Extract the data for the selected indicator, and save a CSV copy
   df_sel <- data[data$Indicator_Code == idno, ] 
-  write.csv(df_sel, .........    #################################################################
+  write.csv(df_sel, "df_sel.csv", na = "", row.names = FALSE)
 
   # Extract the time coverage (for the full dataset)
   time_start <- min(df_sel$Year)
@@ -335,13 +333,15 @@ for(i in 1:length(list_indicators)) {
   list_geo2 <- lapply(list_geo1, function(el) {names(el) <- c("code", "label"); el})
   
   # Get the row number for the selected indicator in the metadata file 
-  iNo <- match(idno, meta$Indicator_Code)
+  iNo <- match(idno, meta$Indicator.Code)
   
   # Extract the notes/comments fromm the metadata file. We also drop empty or NA 
   # elements from the list
-  list_notes = list(list(note = meta$Other_notes[iNo]),
-                    list(note = meta$Notes_from_original_source[iNo], type = "Notes from original source"),
-                    list(note = meta$General_comments[iNo], type = "General comments"))
+  list_notes = list(list(note = meta$Other.notes[iNo]),
+                    list(note = meta$Notes.from.original.source[iNo], 
+                         type = "Notes from original source"),
+                    list(note = meta$General.comments[iNo], 
+                         type = "General comments"))
   list_notes <- Filter(function(x) {
     !is.null(x$note) && !is.na(x$note) && nzchar(trimws(x$note))
   }, list_notes)
@@ -409,42 +409,50 @@ for(i in 1:length(list_indicators)) {
     ),
     series_description = list(   
       idno = list_indicators[i],
-      name = df_doc$Indicator.Name[iNo],
+      name = meta$Indicator.Name[iNo],
       authoring_entity = list(list(name = "World Bank, Development Data Group")),
-      measurement_unit = df_doc$Unit.of.measure[iNo],
+      measurement_unit = meta$Unit.of.measure[iNo],
       time_periods = list(list(start = time_start, end = time_end)),
-      periodicity = df_doc$Periodicity[iNo],
-      base_period = df_doc$Base.Period[iNo],
-      definition_long = df_doc$Long.definition[iNo],
-      methodology = df_doc$Statistical.concept.and.methodology[iNo], 
-      aggregation_method = df_doc$Aggregation.method[iNo],
-      limitation = df_doc$Limitations.and.exceptions[iNo],
-      relevance = df_doc$Development.relevance[iNo],
+      periodicity = meta$Periodicity[iNo],
+      definition_long = meta$Long.definition[iNo],
+      methodology = meta$Statistical.concept.and.methodology[iNo], 
+      aggregation_method = meta$Aggregation.method[iNo],
+      limitation = meta$Limitations.and.exceptions[iNo],
+      relevance = meta$Development.relevance[iNo],
       ref_country = list_geo1,
       notes = list_notes,
       links = list_links,
-      sources = list(list(name = df_doc$Source[iNo])),
+      sources = list(list(name = meta$Source[iNo])),
       license = list(
         list(name = "Creative Commons Attribution 4.0 International (CC BY 4.0)",
              uri = "https://creativecommons.org/licenses/by/4.0/")),
-      series_groups = list(list(name = df_doc$Topic[iNo]))
+      series_groups = list(list(name = meta$Topic[iNo]))
     ),
-    data_structure = list_str,
-    data_notes = list_data_notes
+    data_structure = list_str
   )
   
   # Publish the metadata to the Metadata Editor 
-  metadataeditr::add_project(
-    idno = idno, 
-    type = "indicator", 
-    metadata = i_meta, 
-    overwrite = TRUE,
+  # metadataeditr::add_project(
+  #   idno = idno, 
+  #   type = "indicator", 
+  #   metadata = i_meta, 
+  #   overwrite = TRUE,
+  #   thumbnail = thumbnail
+  # )
+  metadataeditr::create_project(
+    idno = idno,
+    type = "indicator",
+    metadata = i_meta,
     thumbnail = thumbnail
   )
-
-  # Publish the data (CSV) to the Metadata Editor 
   
-}  
-
+  # Upload the data to the Metadata Editor (optional) 
+  # ...
+    
+}
 
 ```
+
+The 4 projects are now available in the Metadata Editor.
+
+![image](img/ME_UG_API_Code_Example_03_projects_in_ME.jpg)
