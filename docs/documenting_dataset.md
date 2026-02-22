@@ -11,7 +11,15 @@ In data catalogs like a NADA catalog, datasets can be made visible as specific e
 
 ## Documenting a dataset
 
-We describe here the elements included in the proposed template.
+### Create a new project
+
+The first step in documenting a database is to create a new project. You do that by clicking on `CREATE NEW PROJECT` in the *My projects* page, then selecting *Database* as data type when prompted. This will open a new, untitled *Project page*. 
+
+In that page, **select the template** you want to use to document the database. A default template is proposed; no action is needed if you want to use the default template. Otherwise, switch to another template by clicking on the template name in the *Templates* frame. Note that you can at any time change the template used for the documentation of a project. The selected template will determine what you see in the navigation tree and in the metadata entry pages, but switching from one template to another will not impact the metadata that has already been entered; no information will be deleted from the metadata.
+
+### Enter information on metadata
+
+The *Metadata information* section in the navigation tree (in the *Project page*) contains elements intended to document the metadata being generated, i.e., metadata about the metadata. All content in this section is optional; it is however recommended practice to document the metadata as precisely as possible. This information will not be useful to data users, but it will be to catalog administrators. When metadata is shared across catalogs, the information entered in the *Information on metadata* provides transparency and clarity on the origin of the metadata.
 
 **INFORMATION ON METADATA**
 
@@ -29,6 +37,8 @@ We describe here the elements included in the proposed template.
 
 - **`Version`** The version of the metadata document (not the version of the database itself).
 
+
+### Enter a description of the database (descriptive metadata)
 
 **DATABASE DESCRIPTION**
 
