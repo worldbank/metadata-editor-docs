@@ -1,12 +1,15 @@
-# Documenting a dataset (or database)
+# Documenting a database or dataset
 
-The World Bank has developed a complementary metadata schema for documenting databases of indicators (i.e., collections of indicators). This schema provides metadata at the database level, which can be published independently in a catalog of datasets, or provided as contextual information attached to the metadata at the indicator level. To establish a link between an indicator and its associated database, the indicator metadata schema includes a dedicated element that stores the database identifier, enabling seamless association between indicator metadata and database metadata.
+In many cases, indicators are organized into databases or datasets. For example, the World Development Indicators are a database (or dataset) of around 1500 indicators, availableeach one of them available for about 200 geographies. In addition to documenting the indicators independently, some organizations may want to document their databases/datasets.
 
-In data catalogs like a NADA catalog, datasets can be made visible as specific entries (a catalog of datasets), and/or the metadata on indicators and the related databases can be combined.
- 
-![image](img/ME_UG_documenting_indicator_indicator_database_nada.png)
 
 ## The metadata standard
+
+The World Bank has developed a complementary metadata schema for documenting databases or datasets of indicators (i.e., collections of indicators), which we also refer to as datasets. This schema provides metadata at the database level, which can be published independently in a catalog of datasets, or provided as contextual information attached to indicator level. To establish a link between an indicator and its associated database, the indicator metadata schema includes a dedicated element that stores the database identifier, enabling seamless association between indicator metadata and database metadata.
+
+In data catalogs like a NADA catalog, datasets can be made visible as specific entries (a catalog of datasets), and/or the metadata on indicators and the related databases can be combined.
+
+![image](img/ME_UG_documenting_indicator_indicator_database_nada.png)
 
 
 ## Documenting a dataset
