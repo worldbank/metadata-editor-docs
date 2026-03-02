@@ -267,7 +267,7 @@ We describe below the metadata elements included in the recommended INSPIRE + GE
 
 **METADATA INFORMATION**
 
-This section is not specific to geographic datasets. It corresponds to the *Document description* section of the DDI Codebook metadata standard (for microdata) and to the *Information on metadata* section in other metadata standards and schemas. This section contains metadata on the metadata, structured in a format consistent across metadata standards supported by the Metadata Editor. The content of this section is maintly intended to be used by catalog administrators, and will not be exported to ISO 19100 metadata files. 
+This section is not specific to geographic datasets. It corresponds to the *Document description* section of the DDI Codebook metadata standard (for microdata) and to the *Information on metadata* section in other metadata standards and schemas. This section contains metadata on the metadata, structured in a format consistent across metadata standards supported by the Metadata Editor. The content of this section is mainly intended to be used by catalog administrators, and will not be exported to ISO 19100 metadata files. 
 
 **DESCRIPTION**
 
