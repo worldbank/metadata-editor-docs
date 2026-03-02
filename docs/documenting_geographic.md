@@ -775,20 +775,21 @@ This section of the metadata document describes the quality of the resource by i
     - **`Dates`** 
       - **`Date`** The date when the consistency check was performed or completed. This indicates when the check was conducted, which helps provide context for the data's current validity. 
       - **`Type`** The type of date related to the consistency check. This refers to the nature of the date, such as whether it is the date of creation, date of publication, or date of revision. Example: (i) "Creation" (Indicates that the date marks the creation of the check) ; "Revision" (Indicates that the check was revised at this date)
-    - **`Responsible party`** The party responsible for carrying out the consistency check or for ensuring the data's consistency. This typically refers to an individual, organization, or group that conducted the check or is accountable for the quality and validity of the data.
-      - **`Individual name`** 
-      - **`Organisation name`**  
-      - **`Email`** 
-      - **`Phone`**  
+    - **`Responsible party`** The party responsible for carrying out the consistency check or for ensuring the data's consistency. This typically refers to an individual, organization, or group that conducted the check or is accountable for the quality and validity of the data.  
+      - **`Individual name`** The responsible party (person) in charge of the consistency check or for ensuring the data's consistency.
+      - **`Organisation name`** The responsible party (organization) in charge of the consistency check or for ensuring the data's consistency.
+      - **`Email`** Enter the email address of the contact person. To ensure continuity and long-term accessibility, avoid using personal email addresses. Use a role-based or institutional email account (e.g., help@myorganization.org) that remains valid even if individual staff members change.
+      - **`Phone`** Enter the phone number for contacting the person or team responsible for the consistency check or for ensuring the data's consistency. To ensure continuity and accessibility, avoid using personal or direct mobile numbers. Instead, provide a general or role-based contact number (e.g., a departmental line or help desk number) that will remain valid even if individual staff members change. 
       - **`Address`** 
-        - **`Delivery point`** 
-        - **`City`** 
-        - **`Postal code`** 
-        - **`Country`** 
+         - **`Delivery point`** Physical address - Street, building number, etc.
+         - **`City`** Physical address - City name
+         - **`Postal code`** Physical address - Postal code
+         - **`Country`** Physical address - Country name
       - **`Online resource`** 
-        - **`Name`** 
-        - **`URL`** 
-        - **`Description`** 
+         - **`Name`** Name of the online resource.
+         - **`Description`** Description of the online resource
+         - **`URL`** URL of the online resource. 
+
     - **`Resource presentation`** The Resource presentation element specifies how a resource is provided, accessed, or presented to users. It indicates the format or method of delivery, such as a document, dataset, map, or service, and how the resource is structured or made available for users to interact with or utilize. This is important for understanding how a resource can be accessed and what type of presentation or output format users can expect when interacting with the data. Example: "PDF document", "CSV file", "Web service", "GeoTIFF", "Shapefile". The element describes the presentation format of the resource, indicating whether it is downloadable, interactive, or available through a service.
     - **`Explanation`** The Explanation element provides additional context or a more detailed description about a specific process, measurement, or result related to the resource. It can include clarification about how a result was obtained, how a test was performed, or why a certain decision was made. This is important for transparency, providing users with the rationale or detailed information behind the data, quality assessments, or any checks that have been carried out. Example: "The resource was assessed using a positional accuracy check, and the dataset passed the consistency check due to correct geospatial coordinates within the acceptable range." This field is used to give further details and clarification on why a result or value was recorded in the metadata.
     - **`Pass`** The Pass element indicates the outcome of a conformance check or validation test conducted on the resource. This is a boolean indicator (True or False) that specifies whether the resource has passed or failed a specific conformance test. If not evaluated, the value may be left blank (null). This helps the user understand the conformance status of the resource in terms of whether it meets certain predefined quality or technical standards. Values: True (the resource has successfully met the required standard or passed the test, indicating conformance) ; False (the resource did not meet the required standard, indicating non-conformance) ; Null/Blank (the resource has not been evaluated, and no conformance status is available). Example: If a dataset has been checked for consistency, a Pass value of "True" would mean that the dataset passed the check, whereas "False" would indicate that it did not meet the required standard. This element is used to track and report the results of quality control or validation tests performed on the resource.
@@ -811,21 +812,20 @@ This section of the metadata document describes the quality of the resource by i
      - **`Rationale`** An explanation of why the process step was undertaken (e.g., "to harmonize resolution with other datasets"). This documents the intent or justification behind the processing.
      - **`Date`** The date and time at which the process step was completed. This supports tracking the sequence and timing of processing events.
      - **`Processor`** The party (organization or individual) responsible for executing the process step. This identifies who performed the processing, ensuring accountability and traceability.
-        - **`Individual name`**
-        - **`Organisation name`**
-        - **`Role`**
-        - **`Email`**
-        - **`Phone`**
-        - **`Address`**
-          - **`Delivery point`**
-          - **`City`**
-          - **`Postal code`**
-          - **`Country`**
-        - **`Online resource`**
-          - **`Name`**
-          - **`URL`**
-          - **`Description`**
-     - **`Source`** Specifies the input data used in the process step. 
+        - **`Individual name`** The responsible party (person) in charge of executing the process step.
+        - **`Organisation name`** The responsible party (organization) in charge of executing the process step.
+        - **`Email`** Enter the email address of the contact person. To ensure continuity and long-term accessibility, avoid using personal email addresses. Use a role-based or institutional email account (e.g., help@myorganization.org) that remains valid even if individual staff members change.
+        - **`Phone`** Enter the phone number for contacting the person or team responsible for executing the process step. To ensure continuity and accessibility, avoid using personal or direct mobile numbers. Instead, provide a general or role-based contact number (e.g., a departmental line or help desk number) that will remain valid even if individual staff members change. 
+        - **`Address`** 
+           - **`Delivery point`** Physical address - Street, building number, etc.
+           - **`City`** Physical address - City name
+           - **`Postal code`** Physical address - Postal code
+           - **`Country`** Physical address - Country name
+        - **`Online resource`** 
+           - **`Name`** Name of the online resource.
+           - **`Description`** Description of the online resource
+           - **`URL`** URL of the online resource.
+       - **`Source`** Specifies the input data used in the process step. 
         - **`Title`** The name of the source dataset or resource. This provides a short reference to the input data.
         - **`Description`** Details about the content and role of the source dataset. This helps users understand the nature and function of the input data.
         - **`Date`** Represents one or more dates associated with the source data (e.g., publication date, creation date).
