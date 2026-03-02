@@ -563,7 +563,7 @@ The Extent element is crucial because it:
 - Helps users determine if a dataset is relevant for their area or time of interest.
 - Supports discovery and filtering in spatial data catalogs.
 - Enables automated data integration and analysis processes.
-- 
+  
 **`Geographic element`** 
   - **`Bounding box`** This is the extent of the resource in the geographic space, given as a bounding box. Defining the coordinates of a rectangle representing the resource area on a map allows the discovery by geographical area. Provide the coordinates bounding the limits of the dataset, by means of four properties:
     - **`West bound longitude`** Western-most coordinate of the limit of the dataset extent, expressed in longitude in decimal degrees.
