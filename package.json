@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "docs:dev": "npm run bundle:openapi && vitepress dev docs",
-    "docs:build": "npm run bundle:openapi && vitepress build docs",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
     "export-pdf": "press-export-pdf export ./docs"
   },
