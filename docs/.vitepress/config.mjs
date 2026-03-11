@@ -79,7 +79,15 @@ export default defineConfig({
         items: [
           { text: 'General instructions', link: '/documenting_general_instructions' },
           { text: 'Document', link: '/documenting_document' },
-          { text: 'Microdata', link: '/documenting_microdata' },          
+          {
+            text: 'Microdata',
+            link: '/documenting_microdata',
+            items: [
+              { text: 'Before you start', link: '/documenting_microdata_before_you_start' },
+              { text: 'Create a new project', link: '/documenting_microdata_create_project' },
+              { text: 'Import and document the dataset', link: '/documenting_microdata_import_document' }
+            ]
+          },
           { text: 'Indicator', link: '/documenting_indicator' },
           { text: 'Databases or datasets', link: '/documenting_dataset' },
           { text: 'Geographic dataset or service', link: '/documenting_geographic' },

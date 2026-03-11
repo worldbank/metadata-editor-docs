@@ -1,15 +1,14 @@
 
 # Upgrade Guide
 
-This guide provides general upgrade instructions, followed by version-specific notes for upgrading.
+This guide provides general upgrade instructions. Detailed changes, bug fixes, and version-specific upgrade instructions are published with each release on GitHub:
 
----
+👉 [https://github.com/worldbank/metadata-editor/releases](https://github.com/worldbank/metadata-editor/releases)
 
-## General Upgrade Instructions
+Review the release notes for the version you are upgrading to before proceeding.
 
-> Use these steps for all upgrades, unless otherwise noted.
 
-### 1. Backup Your Environment
+## 1. Backup Your Environment
 
 Before making any changes:
 
@@ -20,17 +19,16 @@ Before making any changes:
   mysqldump -u your_user -p your_database > backup.sql
   ```
 
----
 
-### 2. Download the Latest Version
+## 2. Download the Latest Version
 
 Download the latest release package from the GitHub repository:
 
 👉 [https://github.com/worldbank/metadata-editor/releases](https://github.com/worldbank/metadata-editor/releases)
 
----
 
-### 3. Replace Application Files
+
+## 3. Replace Application Files
 
 - Rename your current application folder to preserve it:
 
@@ -44,9 +42,8 @@ Download the latest release package from the GitHub repository:
   unzip metadata-editor-v1.0.0.zip -d metadata-editor
   ```
 
----
 
-### 4. Restore Configuration and User Data
+## 4. Restore Configuration and User Data
 
 Copy the following files and folders from your backup to the new installation:
 
@@ -55,88 +52,44 @@ Copy the following files and folders from your backup to the new installation:
 - `application/config/email.php`
 - `application/config/database.php`
 
----
 
-### 5. Database updates
+## 5. Apply Database Updates
 
-If the upgrade includes schema changes, apply them using SQL. Always review the release notes before applying migrations.
+Each release may include database schema changes. Always review the release notes before applying any updates.
 
----
-
-## Version-Specific Upgrade Notes
-
-### Upgrading to **v1.0.0**  
-**Release Date:** July 30, 2025  
-**Tag:** `v1.0.0`
-**Version release link:** https://github.com/worldbank/metadata-editor/releases/tag/V1.0.0
-
-This is a major release that introduces key improvements and fixes:
-
-- Added support for project versioning and locking.
-- UI and API updates for managing publishing to NADA catalogs.
-- Added validation checks for variable deletion (prevents deleting variables used as weights).
-- Improved error reporting for publishing projects to NADA.
-- Fixed handling of Stata special missing values (e.g. .a, .b, .c).
-- Improved translations and batch variable editing.
-- Miscellaneous fixes and minor improvements throughout.
-- Backend FastAPI integration
-
-#### ✅ Applies To:
-
-All versions prior to `v1.0.0`, including:
-- Pre-release/beta versions
-- Clones of the `main` branch before July 2025
-
----
-
-### 🔧 Additional Upgrade Steps for v1.0.0
-
-#### 1. Run SQL Migration
-
-Update your database schema:
-
-```sql
-ALTER TABLE `audit_logs` ADD COLUMN `obj_ref_id` INT NULL;
-
-ALTER TABLE `editor_projects` 
-ADD COLUMN `pid` INT NULL AFTER `study_idno`,
-ADD COLUMN `is_locked` INT NULL AFTER `pid`,
-ADD COLUMN `version_created` INT NULL AFTER `is_locked`,
-ADD COLUMN `version_created_by` INT NULL AFTER `version_created`,
-ADD COLUMN `version_notes` VARCHAR(500) NULL AFTER `version_created_by`,
-ADD COLUMN `version_number` VARCHAR(15) NULL AFTER `study_idno`,
-ADD UNIQUE INDEX `unq_idno` (`idno` ASC, `version_number` ASC);
-
-CREATE INDEX idx_sid_fid_name ON editor_variables (sid, fid, name);
-```
-
-#### 2. Update Python Backend
-
-If you're using the FastAPI-based service (https://github.com/worldbank/metadata-editor-fastapi):
-
-- Download zip from https://github.com/worldbank/metadata-editor-fastapi
-- Replace your current `metadata-editor-fastapi` with the contents from the zip
-- Run from command line to install any dependencies 
+**For versions prior to v1.2.0**, database updates are provided as SQL scripts in the release notes. Apply them manually using a database client or tool such as `mysql`:
 
 ```bash
-cd backend
-pip install -r requirements.txt
+mysql -u your_user -p your_database < update.sql
 ```
 
-Make sure you're running Python 3.12+.
+**Starting with v1.2.0**, the application uses database migration files to manage schema changes. These migrations can be applied in three ways:
 
----
+- **Via the CLI** — run the migration command from the application root:
+
+  ```bash
+  php index.php cli/migrate latest
+  ```
+
+- **Via the Site Administration** — navigate to **Admin > Settings > Database Updates** and apply pending migrations from the interface.
+
+![Database migrations](img/ME_UG_v1-0-0_tech_db_migrations.png)
+
+
+- **Via SQL Script** — The release notes provide information which files to use. Apply the provided SQL update file manually using a database client, e.g., `install/schema.mysql.update-1.2.sql`.
+
+Always review the release notes for each version to confirm which method applies and whether any manual steps are required.
+
 
 ## 📘 Resources
 
-- 🔗 [Changelog for v1.0.0](https://github.com/worldbank/metadata-editor/releases/tag/v1.0.0)
+- 🔗 [All releases](https://github.com/worldbank/metadata-editor/releases)
 - 🐛 [Report an issue](https://github.com/worldbank/metadata-editor/issues)
-- 📥 [Download latest release](https://github.com/worldbank/metadata-editor/releases)
 
----
+
 
 ## 🛟 Need Help?
 
-If you encounter issues during upgrade, restore from your backup and report the problem through the GitHub Issues page. 
+If you encounter issues during an upgrade, restore from your backup and report the problem through the GitHub Issues page.
 
 For email support contact: datatools [at] worldbank [dot] org
