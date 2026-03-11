@@ -1,6 +1,5 @@
 {
   "scripts": {
-    "bundle:openapi": "node scripts/bundle-openapi.mjs",
     "docs:dev": "npm run bundle:openapi && vitepress dev docs",
     "docs:build": "npm run bundle:openapi && vitepress build docs",
     "docs:preview": "vitepress preview docs",
