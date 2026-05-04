@@ -182,7 +182,7 @@ The application includes training materials:
 ### Getting Help
 For technical support and troubleshooting:
 - **Email**: datatools@worldbank.org
-- **Community**: Check for updates on Github https://githbub.com/worldbank/metadata-editor
+- **Community**: Check for updates on Github https://github.com/worldbank/metadata-editor
 
 ### Common Issues
 1. **Application won't start**: Verify system requirements and Visual C++ Runtime installation
