@@ -131,7 +131,7 @@ In Python, metadata is organized as dictionaries, with nested dictionaries and l
 
 ## Code Examples
 
-The examples below show how MetadataEditR (or PyMetadataEditor) are used in combination with base commands and functions from other packages (for R) or libraries (for Python) to automate tasks. 
+The examples below show how MetadataEditR (or PyMetadataEditor) are used in combination with base commands and functions from other packages (for R) or libraries (for Python) to automate tasks. Note that all functions of MetadatacEditR start with a prefix "me_". 
 
 ### Example 1: Generating metadata for a document and publishing it in the Metadata Editor
 
@@ -156,11 +156,11 @@ setwd("C:/MyFolder")
 # Here we assume that the API key is stored in cell (2,1) of a (hidden) CSV file.
 # Reminder: Protect your API key! Never enter it directly in a script.
 my_keys <- read.csv("C:/Myvault/APIkeys.csv", header = F, stringsAsFactors = F)
-set_api_key(my_keys[2,1])
-set_api_url("https://myurl.org/editor/index.php/api")
+me_set_api(api_url = "https://myurl.org/editor/index.php/api",
+           api_key = my_keys[2,1])
 
 # Capture the document cover page and save it as a JPG file
-capture_pdf_cover(file_path = "Doc001.PDF", file_name_jpg = "Doc001") 
+me_capture_pdf_cover(file_path = "Doc001.PDF", file_name_jpg = "Doc001") 
 
 # Generate the metadata as a list of lists. The structure of the object must 
 # comply with https://worldbank.github.io/metadata-schemas/#tag/Document.
@@ -189,7 +189,7 @@ this_doc <- list(
 )
 
 # Publish the metadata object in the Metadata Editor as a new project
-create_project(
+me_create_project(
   type = "document",
   idno = "D001",
   metadata = this_doc,
@@ -197,7 +197,7 @@ create_project(
 )
 
 # Upload the PDF file to the Metadata Editor (attached to project D001)
-resources_add(
+me_resource_add(
   idno = "D001",
   dctype = "doc/anl",
   dcformat = "PDF",
@@ -232,15 +232,15 @@ library(metadataeditr)
 
 # Set the credentials for accessing the Metadata Editor (we assume the API key provides admin privileges).
 my_keys <- read.csv("C:/WBG/vault/APIkeys.csv", header = F, stringsAsFactors = F)
-set_api_key(my_keys[2,1])
-set_api_url("https://myurl.org/editor/index.php/api")
+me_set_api(api_url = "https://myurl.org/editor/index.php/api",
+           api_key = my_keys[2,1])
 
 # Get a list of all projects (ID and title)
 
 # Edit the title if needed
 for(project in projects) {
-if !"(DHS) "%in% title: replace "Demographic and Health Survey with "Demographic and Health Survey (DHS)"
-push
+  if !"(DHS) "%in% title: replace "Demographic and Health Survey with "Demographic and Health Survey (DHS)"
+  push
 }
 
 ```
@@ -289,8 +289,8 @@ thumbnail = "wdi_img.jpg"
 
 # Enter API credentials and URLs for Metadata Editor 
 my_keys <- read.csv("C:/Myvault/APIkeys.csv", header = F, stringsAsFactors = F)
-set_api_key(my_keys[2,1])
-set_api_url("https://myurl.org/editor/index.php/api")
+me_set_api(api_url = "https://myurl.org/editor/index.php/api",
+           api_key = my_keys[2,1])
 
 # Extract the data and metadata from the Excel file
 data <- read_xlsx("wdi_4_indicators.xlsx", sheet = "data")
@@ -307,7 +307,6 @@ list_indicators <- unique(data$Indicator_Code)
 data <- data %>%
   pivot_longer(cols = starts_with("X"), names_to = "Year",  values_to = "Value") %>%
   mutate(Year = as.integer(sub("X", "", Year))) 
-
 
 # Loop through indicators; extract metadata and publish in Metadata Editor
 # ------------------------------------------------------------------------
@@ -432,14 +431,14 @@ for(i in 1:length(list_indicators)) {
   )
   
   # Publish the metadata to the Metadata Editor 
-  # metadataeditr::add_project(
+  # me_add_project(
   #   idno = idno, 
   #   type = "indicator", 
   #   metadata = i_meta, 
   #   overwrite = TRUE,
   #   thumbnail = thumbnail
   # )
-  metadataeditr::create_project(
+  me_create_project(
     idno = idno,
     type = "indicator",
     metadata = i_meta,
