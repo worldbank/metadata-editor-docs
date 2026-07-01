@@ -4,7 +4,7 @@ The Metadata Editor uses **background jobs** for long-running tasks: publishing 
 
 This page explains how the job system works, when the **Metadata Editor background worker** is needed, and how to install it. For day-to-day use of the Jobs page in the application, see [Managing background jobs](/managing_jobs.html).
 
-> **Do not confuse two different job systems.** The **FastAPI service** (Metadata Editor FastAPI) handles data conversion and indicator DuckDB operations and runs its own internal jobs for heavy data work. The **background worker** service (`metadata-editor-worker`) processes the Metadata Editor **job queue** stored in MySQL (`job_queue`). See [When each service is required](#when-each-service-is-required) below.
+> **Do not confuse two different job systems.** The **FastAPI service** (Metadata Editor FastAPI) handles data conversion and indicator timeseries operations and runs its own internal jobs for heavy data work. The **background worker** service (`metadata-editor-worker`) processes the Metadata Editor **job queue** stored in MySQL (`job_queue`). See [When each service is required](#when-each-service-is-required) below.
 
 
 ## Is the background worker required?

@@ -5,7 +5,7 @@ The Metadata Editor is deployed as a **web application** on a server (or as a **
 | Component | Role | Required? |
 |-----------|------|-----------|
 | **Metadata Editor** | Web UI, API, MySQL metadata, job queue | Yes |
-| **FastAPI service** | Microdata conversion, statistics, indicator DuckDB | Yes, when importing or processing data |
+| **FastAPI service** | Microdata conversion, statistics, indicator timeseries data | Yes, when importing or processing data |
 | **Background worker** | Job queue processing (batch, API automation) | Optional — see [Jobs and background workers](/tech_jobs_and_workers.html) |
 
 The FastAPI service is the [Metadata Editor FastAPI](https://github.com/worldbank/metadata-editor-fastapi) application — a local companion for file conversion and indicator storage, not a public API.

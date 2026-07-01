@@ -4,7 +4,7 @@
 The application follows a **three-tier architecture**:
 - **Frontend**: Built using **Vue.js**, providing a responsive and interactive user interface for metadata editing.
 - **Backend (Metadata Editor)**: PHP / CodeIgniter — application logic, authentication, sessions, job queue orchestration, and requests to the FastAPI service.
-- **FastAPI service**: Implemented using **FastAPI (Python)** ([Metadata Editor FastAPI](https://github.com/worldbank/metadata-editor-fastapi)), offering high-performance endpoints for reading, validating, and converting statistical data (SPSS, Stata, CSV), and for indicator timeseries storage and queries (DuckDB).
+- **FastAPI service**: Implemented using **FastAPI (Python)** ([Metadata Editor FastAPI](https://github.com/worldbank/metadata-editor-fastapi)), offering high-performance endpoints for reading, validating, and converting statistical data (SPSS, Stata, CSV), and for indicator timeseries import, queries, charts, and export.
 
 A separate **background worker** (`metadata-editor-worker` service) optionally processes long-running tasks from the Metadata Editor job queue (publish to NADA, PDF generation, API-driven imports). The application runs without it; the worker is recommended for batch, heavy, and automated workflows. See [Jobs and background workers](/tech_jobs_and_workers.html).
 
@@ -35,7 +35,7 @@ A separate **background worker** (`metadata-editor-worker` service) optionally p
 - **Dependencies** (include among others):
   - `pandas`: Data manipulation and structure transformation
   - `pyreadstat`: Import/export of statistical file formats (SPSS, Stata, SAS)
-  - DuckDB: Indicator timeseries import, validation, charts, and export
+  - Indicator timeseries: CSV import, validation, paging, charts, and export
 - **Note**: The FastAPI service runs its own internal jobs for some operations (e.g. large indicator CSV import). That is separate from the Metadata Editor **background worker**.
 
 

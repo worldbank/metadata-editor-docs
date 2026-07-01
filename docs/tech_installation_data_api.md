@@ -1,6 +1,6 @@
 # Install and configure the FastAPI service
 
-The **FastAPI service** ([Metadata Editor FastAPI](https://github.com/worldbank/metadata-editor-fastapi)) runs beside the Metadata Editor on the **same machine**. It handles CPU-intensive work: Stata/SPSS/CSV conversion, summary statistics, geospatial metadata (optional), and indicator DuckDB operations.
+The **FastAPI service** ([Metadata Editor FastAPI](https://github.com/worldbank/metadata-editor-fastapi)) runs beside the Metadata Editor on the **same machine**. It handles CPU-intensive work: Stata/SPSS/CSV conversion, summary statistics, geospatial metadata (optional), and indicator timeseries import, validation, charts, and export.
 
 > **Security:** Bind to **`127.0.0.1`**. The FastAPI service is for **local processing on the same host**, not for external clients. Do not expose port 8000 to the internet. See [Run the FastAPI service](/tech_installation_fastapi.html) for production deployment.
 

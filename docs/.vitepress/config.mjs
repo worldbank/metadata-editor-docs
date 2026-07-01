@@ -53,7 +53,15 @@ export default defineConfig({
           },
           { text: 'Post-install configuration', link: '/tech_post_install_configuration' },
           { text: 'Jobs and background workers', link: '/tech_jobs_and_workers' },
-          { text: 'Upgrading', link: '/tech_upgrading' }
+          {
+            text: 'Upgrading',
+            link: '/tech_upgrading',
+            collapsed: false,
+            items: [
+              { text: 'Upgrade to v1.3.0', link: '/tech_upgrading_v1_3' },
+              { text: 'Upgrade to v1.2.0', link: '/tech_upgrading_v1_2' }
+            ]
+          }
           /*
           { text: 'Migrating content from Nesstar or NADA', link: '/tech_migrating' },
           */

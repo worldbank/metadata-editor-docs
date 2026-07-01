@@ -1,95 +1,138 @@
+# Upgrading the Metadata Editor
 
-# Upgrade Guide
+This page describes the **general upgrade procedure** that applies to every release. Version-specific database changes, new services, and breaking changes are documented on separate pages — start with the guide for the version you are upgrading **to**.
 
-This guide provides general upgrade instructions. Detailed changes, bug fixes, and version-specific upgrade instructions are published with each release on GitHub:
+## Upgrade to the latest version
+
+| Target version | Upgrade steps | Release notes |
+|----------------|---------------|---------------|
+| **v1.3.0** | [Upgrade to v1.3.0](/tech_upgrading_v1_3.html) | [GitHub release](https://github.com/worldbank/metadata-editor/releases) |
+| **v1.2.0** | [Upgrade to v1.2.0](/tech_upgrading_v1_2.html) | [GitHub release](https://github.com/worldbank/metadata-editor/releases) |
+
+If you are more than one major version behind, apply upgrades **in order** (for example 1.1 → 1.2 → 1.3), running each version's database migrations before moving to the next.
+
+Official release packages and GitHub release notes:
 
 👉 [https://github.com/worldbank/metadata-editor/releases](https://github.com/worldbank/metadata-editor/releases)
 
-Review the release notes for the version you are upgrading to before proceeding.
 
-
-## 1. Backup Your Environment
+## 1. Back up your environment
 
 Before making any changes:
 
-- **Application Files**: Copy the entire application directory to a secure location.
-- **Database**: Export your database using a tool like `mysqldump`:
+- **Application files** — copy the entire Metadata Editor directory (and the FastAPI folder if installed separately).
+- **Database** — export your MySQL/MariaDB database:
 
   ```bash
-  mysqldump -u your_user -p your_database > backup.sql
+  mysqldump -u your_user -p your_database > backup-$(date +%Y%m%d).sql
   ```
 
+- **Configuration** — note copies of `application/config/database.php`, `editor.php`, `email.php`, `auth.php`, and `fastapi/.env` if you customized them.
 
-## 2. Download the Latest Version
 
-Download the latest release package from the GitHub repository:
+## 2. Download the new release
+
+Download the release package for the target version from GitHub:
 
 👉 [https://github.com/worldbank/metadata-editor/releases](https://github.com/worldbank/metadata-editor/releases)
 
+If you use Git, check out the release tag instead of `main` or `develop`.
 
 
-## 3. Replace Application Files
+## 3. Replace application files
 
-- Rename your current application folder to preserve it:
-
-  ```bash
-  mv metadata-editor metadata-editor-backup
-  ```
-
-- Unzip the new release and place it in the original folder path:
-
-  ```bash
-  unzip metadata-editor-v1.0.0.zip -d metadata-editor
-  ```
-
-
-## 4. Restore Configuration and User Data
-
-Copy the following files and folders from your backup to the new installation:
-
-- `datafiles/`
-- `application/config/config.php`
-- `application/config/email.php`
-- `application/config/database.php`
-
-
-## 5. Apply Database Updates
-
-Each release may include database schema changes. Always review the release notes before applying any updates.
-
-**For versions prior to v1.2.0**, database updates are provided as SQL scripts in the release notes. Apply them manually using a database client or tool such as `mysql`:
+Preserve your current installation, then deploy the new code:
 
 ```bash
-mysql -u your_user -p your_database < update.sql
+mv metadata-editor metadata-editor-backup
+unzip metadata-editor-vX.Y.Z.zip -d metadata-editor
 ```
 
-**Starting with v1.2.0**, the application uses database migration files to manage schema changes. These migrations can be applied in three ways:
-
-- **Via the CLI** — run the migration command from the application root:
-
-  ```bash
-  php index.php cli/migrate latest
-  ```
-
-- **Via the Site Administration** — navigate to **Admin > Settings > Database Updates** and apply pending migrations from the interface.
-
-![Database migrations](img/ME_UG_v1-0-0_tech_db_migrations.png)
+Or merge a Git checkout over your deployment path, keeping local config files.
 
 
-- **Via SQL Script** — The release notes provide information which files to use. Apply the provided SQL update file manually using a database client, e.g., `install/schema.mysql.update-1.2.sql`.
+## 4. Restore configuration and user data
 
-Always review the release notes for each version to confirm which method applies and whether any manual steps are required.
+Copy from your backup into the new installation:
+
+| Path | Action |
+|------|--------|
+| `datafiles/` | **Restore** — project uploads and derived data |
+| `files/` | Restore if you store custom assets there |
+| `application/config/database.php` | **Keep** your database credentials |
+| `application/config/email.php` | **Keep** your SMTP settings |
+| `application/config/editor.php` | **Merge** — keep `storage_path`, `data_api_url`, and other local values |
+| `application/config/auth.php` | **Keep** if you configured OIDC or custom auth |
+| `fastapi/.env` | **Keep** — especially `STORAGE_PATH` |
+
+Do **not** replace `datafiles/` with an empty folder from the release archive.
+
+Also update the **FastAPI service** from [metadata-editor-fastapi](https://github.com/worldbank/metadata-editor-fastapi) when the release notes require it (indicator data and microdata import depend on a compatible FastAPI version).
 
 
-## 📘 Resources
+## 5. Apply database updates
 
-- 🔗 [All releases](https://github.com/worldbank/metadata-editor/releases)
-- 🐛 [Report an issue](https://github.com/worldbank/metadata-editor/issues)
+Each release may include schema changes. **Always read the version-specific upgrade page** before running migrations.
+
+### Versions prior to v1.2.0
+
+Apply SQL scripts from the release notes manually:
+
+```bash
+mysql -u your_user -p your_database < install/schema.mysql-update-X.Y.sql
+```
+
+### v1.2.0 and later
+
+The application ships **database migration files** under `application/migrations/`. Apply pending migrations in one of these ways:
+
+**Recommended — Site administration**
+
+1. Log in as Site Administrator.
+2. Open **Admin → Settings → Database Updates**.
+3. Apply each pending migration in order.
+4. Use **Mark as applied** only when you already ran the equivalent SQL manually.
+
+**Command line**
+
+From the Metadata Editor application root:
+
+```bash
+php index.php cli/migrate latest
+```
+
+**Manual SQL**
+
+When migrations are unavailable, use the consolidated script named in the version upgrade guide, for example:
+
+- v1.2.0: `install/schema.mysql-update-1.2.sql`
+- v1.3.0: `install/schema.mysql-update-1.3.sql`
+
+Ignore duplicate column/table errors if you re-run statements that were already applied.
 
 
+## 6. Post-upgrade checks
 
-## 🛟 Need Help?
+After code and database updates:
 
-If you encounter issues during an upgrade, restore from your backup and report the problem through the GitHub Issues page.
+1. Confirm the application loads and you can log in.
+2. Verify the [FastAPI service](/tech_installation_data_api.html) is running if you use data import or indicator timeseries.
+3. If you use background jobs, confirm the [background worker](/tech_jobs_and_workers.html) service is running.
+4. Review [Post-install configuration](/tech_post_install_configuration.html) for smoke tests (microdata import, email, optional job queue).
 
-For email support contact: datatools [at] worldbank [dot] org
+Then follow any **additional steps** listed on the version-specific upgrade page.
+
+
+## Resources
+
+- [All releases](https://github.com/worldbank/metadata-editor/releases)
+- [Report an issue](https://github.com/worldbank/metadata-editor/issues)
+- [Jobs and background workers](/tech_jobs_and_workers.html)
+- [Post-install configuration](/tech_post_install_configuration.html)
+
+
+## Need help?
+
+If an upgrade fails, restore from your backup and report the problem on GitHub Issues.
+
+For email support: datatools [at] worldbank [dot] org
