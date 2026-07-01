@@ -166,7 +166,7 @@ Use the official `deploy/linux/install-service.sh` or `deploy/windows/install-se
 | Feature | Requirement |
 |---------|-------------|
 | Geospatial metadata endpoints | Conda + [README-geospatial.md](https://github.com/worldbank/metadata-editor-fastapi/blob/main/README-geospatial.md) |
-| AI metadata reviewer | `requirements-reviewer.txt` + [README-reviewer.md](https://github.com/worldbank/metadata-editor-fastapi/blob/main/README-reviewer.md) |
+| Metadata reviewer | [Install the metadata reviewer](/tech_installation_metadata_reviewer.html) — see also [ai4data Metadata Reviewer](https://worldbank.github.io/ai4data/docs/metadata-reviewer/overview.html) |
 
 
 ## Troubleshooting

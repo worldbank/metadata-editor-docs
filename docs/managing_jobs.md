@@ -120,7 +120,7 @@ Typical user-facing flows:
 | Microdata import via API | Yes | `import_microdata` |
 | Indicator CSV import in editor | Usually no | Editor waits on FastAPI in the same request |
 | Indicator import via API | Yes | `import_indicator_data` |
-| Metadata assessment | Yes | `metadata_assessment_result` (admin-driven) |
+| Metadata assessment | Yes | `metadata_assessment_result` (site administrators; requires [metadata reviewer](/tech_installation_metadata_reviewer.html)). See [Metadata reviewer](/assess_metadata.html). |
 
 If you only use the editor interactively and do not enqueue API jobs, you may still see jobs for PDF generation or NADA publish. **Those specific tasks** need the background worker to finish; everything else in the editor continues to work if the worker is off.
 

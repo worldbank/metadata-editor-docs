@@ -97,6 +97,7 @@ Run these checks before go-live:
 | 3 | Visit `http://127.0.0.1:8000` on the server | FastAPI docs or health response |
 | 4 | Create a test microdata project; import a small CSV or Stata/SPSS file | Import completes without FastAPI service errors |
 | 5 | *(Optional)* Enqueue a background job or generate PDF | Job completes if [background worker](/tech_jobs_and_workers.html) is running |
+| 6 | *(Optional)* Click **Assess metadata** on a test project **Issues** page | New issues appear if [metadata reviewer](/tech_installation_metadata_reviewer.html) is installed and enabled — see [Metadata reviewer](/assess_metadata.html) |
 | 6 | Send test email | Message received or admin test page reports success |
 
 If microdata import fails, verify the FastAPI service is running, `STORAGE_PATH` matches editor storage, and `data_api_url` is correct.

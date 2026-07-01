@@ -48,7 +48,8 @@ export default defineConfig({
             collapsed: true,
             items: [
               { text: 'Install and configure', link: '/tech_installation_data_api' },
-              { text: 'Run the FastAPI service', link: '/tech_installation_fastapi' }
+              { text: 'Run the FastAPI service', link: '/tech_installation_fastapi' },
+              { text: 'Metadata reviewer (optional)', link: '/tech_installation_metadata_reviewer' }
             ]
           },
           { text: 'Post-install configuration', link: '/tech_post_install_configuration' },
@@ -127,6 +128,20 @@ export default defineConfig({
           { text: 'Image', link: '/documenting_image' },
           { text: 'Video', link: '/documenting_video' },
           { text: 'Research project and scripts', link: '/documenting_script' }
+        ]
+      },
+      {
+        text: 'Project issues',
+        collapsed: false,
+        items: [
+          { text: 'Working with project issues', link: '/project_issues' }
+        ]
+      },
+      {
+        text: 'Metadata reviewer',
+        collapsed: false,
+        items: [
+          { text: 'Metadata reviewer', link: '/assess_metadata' }
         ]
       },
       {

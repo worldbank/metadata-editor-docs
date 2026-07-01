@@ -53,6 +53,8 @@ Interactive work in the editor (such as importing indicator CSV data with **wait
 | PDF documentation (background) | — | ✓ | ✓ |
 | Metadata assessment jobs | — | ✓ | ✓ |
 
+See [Metadata reviewer](/assess_metadata.html) for how to run and resolve reviews, and [Install the metadata reviewer](/tech_installation_metadata_reviewer.html) for setup. [Project issues](/project_issues.html) work without the reviewer.
+
 \* Publish jobs may call the FastAPI service to export data (for example indicator timeseries CSV) before upload to NADA.
 
 **Practical rule:**

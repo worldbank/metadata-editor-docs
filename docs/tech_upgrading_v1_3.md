@@ -89,7 +89,7 @@ Install or restart the worker after upgrade if you already use background jobs:
 |---------|----------|-------|
 | `data_api_url` / `EDITOR_DATA_API_URL` | `application/config/editor.php` | Required for indicator and microdata data features |
 | `storage_path` + FastAPI `STORAGE_PATH` | `editor.php`, `fastapi/.env` | Must align; see [Post-install configuration](/tech_post_install_configuration.html) |
-| Metadata assessment toggle | Site administration / site configurations | Gates Issues UI and assessment jobs when disabled |
+| Metadata assessment toggle | Site administration / site configurations | Shows the **Assess metadata** button on the Issues page; see [Metadata reviewer](/assess_metadata.html). [Project issues](/project_issues.html) are available independently. |
 | Default Editor role, project sharing | Site configurations | New in v1.3 — review for your organization |
 | Registry role assignments | Users and roles | Codelist manager, data structure manager, Project manager |
 
