@@ -5,21 +5,28 @@ function extractLinksFromConfig(config) {
   const links = [];
 
   function extractLinks(sidebar) {
+    if (!sidebar) return;
 
     if (sidebar.items) {
-        for (const item of sidebar.items) {            
-          if (item.items) {
-            extractLinks(item.items);
-          } else if (item.link) {
-            links.push(`${item.link}.html`);
-          }
+      for (const item of sidebar.items) {
+        if (item.link) {
+          links.push(`${item.link}.html`);
         }
+        if (item.items) {
+          extractLinks(item);
+        }
+      }
     }
-
   }
 
-  for (const key in config.sidebar) {
-    extractLinks(config.sidebar[key]);
+  if (Array.isArray(config.sidebar)) {
+    for (const section of config.sidebar) {
+      extractLinks(section);
+    }
+  } else {
+    for (const key in config.sidebar) {
+      extractLinks(config.sidebar[key]);
+    }
   }
 
 

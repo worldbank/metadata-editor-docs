@@ -1,43 +1,28 @@
-# Installation Guide (Windows Server)
+# Installation (Windows server)
 
-This guide provides step-by-step instructions for installing and configuring the Metadata Editor on Windows server.
+Install the Metadata Editor and FastAPI service on **Windows Server** with **IIS**, MySQL/MariaDB, and optional background services.
 
----
+**Before you start:** [Installation overview](/tech_installation.html) · **After install:** [Post-install configuration](/tech_post_install_configuration.html)
 
-## System Requirements
+> **IIS on Windows 10/11 Pro** — same steps apply; enable IIS and required features via “Turn Windows features on or off.”
 
-Before beginning the installation, ensure your system meets the following requirements:
+
+## System requirements
 
 | Component | Requirement |
 |-----------|-------------|
-| **PHP** | Version 8.2 or later |
-| **MySQL** | Version 8.x or MariaDB 10.x or later |
-| **Python** | Version 3.12 |
-| **Windows Service Manager** | NSSM (for running services) |
-| **Version Control** | GIT (optional, for updates) |
-| **IIS** | If using IIS, PHP Manager is recommended |
+| **PHP** | 8.2+ (Non-Thread Safe x64 for IIS) |
+| **MySQL / MariaDB** | 8.x / 10.x+ |
+| **Python** | 3.11+ (Conda recommended for FastAPI service) |
+| **IIS** | 10+ with URL Rewrite; [PHP Manager for IIS](https://www.iis.net/downloads/community/2018/05/php-manager-150-for-iis-10) optional |
+| **NSSM** | For FastAPI service and background worker (production) |
 
----
 
-## Installation Procedure
+## Step 1: Install PHP
 
-### Step 1: Install PHP
-
-#### Download PHP
-
-1. Visit [php.net](https://windows.php.net/download/)
-2. Select PHP 8.2 or later
-3. **Important for IIS users:** Download the **Non-Thread Safe (NTS)** version
-
-#### Configure PHP for IIS
-
-If using IIS, use **PHP Manager** for installation:
-- Download: [PHP Manager for IIS 10](https://www.iis.net/downloads/community/2018/05/php-manager-150-for-iis-10)
-- Alternatively, manually edit the `php.ini` configuration file
-
-#### Enable Required PHP Extensions
-
-Edit the `php.ini` file located in your PHP installation directory and enable the following extensions:
+1. Download PHP 8.2+ **NTS x64** from [windows.php.net](https://windows.php.net/download/).
+2. Configure via [PHP Manager for IIS](/tech_installation_php.html) or manual `php.ini`.
+3. Enable extensions:
 
 ```ini
 extension=mysqli
@@ -48,294 +33,144 @@ extension=mbstring
 extension=zip
 ```
 
-#### Configure PHP Runtime Settings
-
-Update the following settings in `php.ini`:
+4. Recommended settings:
 
 ```ini
 memory_limit = 528M
-max_execution_time = 60
+max_execution_time = 300
 post_max_size = 2000M
 upload_max_filesize = 2000M
-display_errors = On
 ```
 
----
+Install **IIS URL Rewrite**: https://www.iis.net/downloads/microsoft/url-rewrite
 
-### Step 2: Install MySQL Database
 
-#### Download MySQL
+## Step 2: Install MySQL
 
-1. Download MySQL: [dev.mysql.com/downloads/mysql](https://dev.mysql.com/downloads/mysql/)
-2. Download MySQL Workbench: [dev.mysql.com/downloads/workbench](https://dev.mysql.com/downloads/workbench/)
-
-#### Configuration During Installation
-
-When installing MySQL:
-1. Set a strong password for the root user
-2. Note your password—you'll need it later
-
-MySQL Workbench provides a graphical interface for managing your databases. Refer to the [official documentation](https://dev.mysql.com/doc/workbench/en/) for detailed usage instructions.
-
----
-
-### Step 3: Install Python
-
-1. Download Python 3.12 from [python.org/downloads/windows](https://www.python.org/downloads/windows/)
-2. Run the installer
-3. **Important:** Check the box to "Add Python to PATH" during installation
-4. Complete the installation wizard
-
----
-
-### Step 4: Install Metadata Editor Frontend
-
-#### Create Folder Structure
-
-Create the following directory structure:
-
-```
-C:\inetpub\wwwroot\metadata_editor\
-├── editor\
-└── editor-fastapi\
-```
-
-*Note: For IIS installations, use `C:\inetpub\wwwroot\metadata_editor`*
-
-#### Download Editor Source Code
-
-1. Visit [github.com/worldbank/metadata-editor](https://github.com/worldbank/metadata-editor)
-2. Click the **Code** button
-3. Select **Download ZIP**
-4. Extract the contents into the `editor\` folder
-
-![GitHub Download Metadata Editor](img/ME_UG_v1-0-0_tech_github-editor.png)
-
----
-
-### Step 5: Install Metadata Editor FastAPI Backend
-
-The FastAPI backend handles data processing tasks including importing/exporting SPSS and STATA files and generating statistics.
-
-#### Download FastAPI Application
-
-1. Visit [github.com/worldbank/metadata-editor-fastapi](https://github.com/worldbank/metadata-editor-fastapi)
-2. Click the **Code** button
-3. Select **Download ZIP**
-4. Extract the contents into the `editor-fastapi\` folder
-
-![GitHub Download FastAPI](img/ME_UG_v1-0-0_tech_github-fastapi.png)
-
-#### Install FastAPI Dependencies
-
-Open Command Prompt and navigate to the `editor-fastapi` folder:
-
-```bash
-cd C:\inetpub\wwwroot\metadata_editor\editor-fastapi
-pip install -r requirements.txt
-```
-
-![pip Install Dependencies](img/ME_UG_v1-0-0_tech_pip.png)
-
-#### Test FastAPI Installation
-
-To verify the installation works, run:
-
-```bash
-python -m uvicorn main:app --reload --host 0.0.0.0 --port 8000
-```
-
-![Uvicorn Running Status](img/ME_UG_v1-0-0_tech_uvicorn.png)
-
-You should see output confirming the application is running. Open your browser and visit `http://localhost:8000` to verify.
-
-![Localhost 8000 Verification](img/ME_UG_v1-0-0_tech_fastapi-run.png)
-
----
-
-### Step 6: Configure Database
-
-#### Create Database
-
-Using MySQL Workbench (GUI) or command line, create a new database:
+1. Install MySQL from [dev.mysql.com/downloads/mysql](https://dev.mysql.com/downloads/mysql/).
+2. Set and record the root password.
+3. Create database and user (Workbench or CLI):
 
 ```sql
 CREATE DATABASE metadata_editor;
-```
-
-#### Create Database User
-
-Create a dedicated user account for the application:
-
-```sql
 CREATE USER 'editor_user'@'localhost' IDENTIFIED BY 'your-secure-password';
 GRANT ALL PRIVILEGES ON metadata_editor.* TO 'editor_user'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
-*Replace 'your-secure-password' with a strong password and remember it for the next step.*
 
-For detailed instructions, see the [MySQL Workbench documentation](https://dev.mysql.com/doc/workbench/en/wb-mysql-connections-navigator-management-users-and-privileges.html).
+## Step 3: Folder layout and source code
 
----
+Create:
 
-### Step 7: Configure Metadata Editor
+```
+C:\inetpub\metadata-editor\
+├── editor\          ← Metadata Editor (index.php)
+└── fastapi\         ← FastAPI service
+```
 
-#### Update Database Connection Settings
+Download from GitHub (ZIP or clone):
 
-1. Navigate to `editor\application\config\`
-2. Copy or rename `database.sample.php` to `database.php`
-3. Edit `database.php` in a text editor (Notepad or Notepad++)
-4. Update the following values:
+- [metadata-editor](https://github.com/worldbank/metadata-editor) → `editor\`
+- [metadata-editor-fastapi](https://github.com/worldbank/metadata-editor-fastapi) → `fastapi\`
+
+![GitHub Download Metadata Editor](img/ME_UG_v1-0-0_tech_github-editor.png)
+
+
+## Step 4: Configure Metadata Editor
+
+1. Copy `editor\application\config\database.sample.php` to `database.php`.
+2. Edit credentials:
 
 ```php
 $db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => 'localhost',  // or IP address of database server
+	'hostname' => 'localhost',
 	'username' => 'editor_user',
 	'password' => 'your-secure-password',
 	'database' => 'metadata_editor',
-	// ... other settings
+	// ...
 );
 ```
+
 ![Database Configuration File](img/ME_UG_v1-0-0_tech_db_settings.png)
-5. Save the file
 
-#### Set Folder Permissions
+3. **Permissions** — grant the IIS app pool identity **Modify** on:
 
-Configure read/write permissions for the following directories:
+- `editor\datafiles\`
+- `editor\files\`
+- `editor\logs\`
 
-**Editor Folders:**
-- `/Editor/Datafiles/`
-- `/Editor/Files/`
-- `/Editor/Logs/`
 
-**FastAPI Folders:**
-- `/editor-fastapi/Jobs/`
+## Step 5: Configure IIS
 
-*For IIS: Set these permissions through IIS Manager or file properties dialog.*
+1. Open **IIS Manager**.
+2. Create a site or application pointing to **`C:\inetpub\metadata-editor\editor`** (the `editor` subfolder, not the parent).
+3. App pool: **No Managed Code**, Integrated pipeline.
+4. Ensure URL Rewrite routes requests to `index.php` (standard CodeIgniter/front-controller pattern). The editor root includes **`web.config`** for this.
 
-#### Configure IIS (Web Server)
+For optional clean URLs (hide `index.php` in the browser), see [Clean URLs](/tech_installation_clean_urls.html).
 
-1. Open **Internet Information Services (IIS) Manager**
-2. Create a new website or virtual directory pointing to: `C:\inetpub\wwwroot\metadata_editor\editor`
-3. **Important:** Point to the `editor` subfolder, not the parent `metadata_editor` folder
-4. Set the appropriate app pool and permissions
+Handler mapping and PHP on IIS: [PHP installation (IIS)](/tech_installation_php.html).
 
-#### Run the Web Installer
 
-1. Open a web browser
-2. Navigate to your Metadata Editor URL:
-   - **Local:** `http://localhost`
-   - **In subfolder:** `http://localhost/editor`
-3. Follow the on-screen installation wizard to complete setup
+## Step 6: Web installer
 
----
+1. Browse to your site URL (e.g. `http://localhost/` or `http://localhost/metadata-editor/`).
+2. Fix any failed prerequisite checks.
+3. Run **Install Database** and create the Site Administrator account.
 
-### Step 8: Run FastAPI as a Windows Service
 
-*(Optional but recommended for production environments)*
+## Step 7: FastAPI service
 
-To run FastAPI automatically on system startup, follow these steps:
+Follow **[Install and configure the FastAPI service](/tech_installation_data_api.html)**:
 
-#### Download NSSM
+1. `fastapi\.env` with `STORAGE_PATH=C:\inetpub\metadata-editor\editor\datafiles`
+2. Conda or `.venv` + `pip install -r requirements.txt`
+3. Test: `start.bat -f` then open `http://127.0.0.1:8000`
+4. Production: **[Run the FastAPI service — Windows](/tech_installation_fastapi.html#windows-nssm)** using `fastapi\deploy\windows\install-service.bat`
 
-1. Visit [nssm.cc/download](https://nssm.cc/download)
-2. Download the latest version
-3. Extract to a folder, e.g., `C:\nssm`
+Do **not** bind the FastAPI service to `0.0.0.0` on untrusted networks. Do **not** use `--reload` in production.
 
-#### Create Startup Batch File
 
-1. Create a new file `run-pydatatools.bat` in the `editor-fastapi\` folder
-2. Add the following lines:
+## Step 8: Background worker (optional)
 
-```batch
-pip install -r requirements.txt
-python -m uvicorn main:app --host 0.0.0.0 --port 8000
+The Metadata Editor works without this service. Enable for batch jobs or API automation.
+
+From **elevated PowerShell**, with `$AppRoot` = the folder that contains `index.php` (the **editor** root):
+
+```powershell
+cd C:\inetpub\metadata-editor\editor\deploy\windows
+.\install-service.ps1 -AppRoot "C:\inetpub\metadata-editor\editor"
 ```
 
-3. Save the file
+Verify:
 
-#### Install Windows Service
-
-1. Open **Command Prompt as Administrator**
-2. Run the NSSM installer:
-
-```bash
-C:\nssm\nssm.exe install
+```powershell
+Get-Service metadata-editor-worker
+Get-Content C:\inetpub\metadata-editor\editor\logs\worker.log -Tail 20
 ```
 
-3. Fill in the following fields:
-   - **Path:** Full path to `run-pydatatools.bat`
-   - **Startup directory:** Path to `editor-fastapi` folder
-   - **Service name:** `pydatatools` (or your preferred name)
+Details: [Jobs and background workers](/tech_jobs_and_workers.html).
 
-![NSSM Service Configuration](img/ME_UG_v1-0-0_tech_nssm_edit.png)
 
-4. Click **Install service**
+## Step 9: Post-install
 
-#### Add Python to System PATH
+Complete **[Post-install configuration](/tech_post_install_configuration.html)** — `data_api_url`, storage paths, SMTP, smoke tests, backups.
 
-To ensure the service can find Python:
-
-1. Press **Windows Key** and search for "System environment variables"
-2. Click **Edit the system environment variables**
-
-![System Environment Variables](img/ME_UG_v1-0-0_tech_env_vars.png)
-
-3. Click **Environment Variables...**
-4. Under **System variables**, find and select **Path**
-5. Click **Edit**
-6. Click **New** and add the path to your Python installation (e.g., `C:\Users\YourUsername\AppData\Local\Programs\Python\Python312`)
-
-![Edit Path Variable](img/ME_UG_v1-0-0_tech_env_edit.png)
-
-7. Click **OK** on all dialogs
-
-#### Verify Service Installation
-
-1. Press **Windows Key** and search for "Services"
-2. Look for `pydatatools` in the list
-
-![Windows Services Manager](img/ME_UG_v1-0-0_tech_services.png)
-
-3. If not running, right-click and select **Start**
-4. Open your browser and visit `http://localhost:8000` to verify
-
----
 
 ## Troubleshooting
 
-### Common Issues
-
-**Service won't start:**
-- Verify Python path is added to system environment variables
-- Check that the batch file path is correct
-- Review Windows Event Viewer for error messages
-
-**Database connection error:**
-- Verify MySQL is running
-- Confirm username and password in `database.php`
-- Check that the database and user were created successfully
-
-**Permission denied errors:**
-- Ensure IIS app pool identity has read/write permissions to required folders
-- Check folder ownership and NTFS permissions
-
-**PHP extensions not loading:**
-- Verify extension lines are uncommented in `php.ini`
-- Check that extension DLL files exist in the `ext\` folder
-- Restart IIS or PHP service after changes
-
----
-
-## Next Steps
-
-Once installation is complete:
-
-1. **Initial Configuration:** Log in to the Metadata Editor and configure basic settings
-2. **User Management:** Create user accounts and assign roles
-3. **Data Import:** Load your initial datasets
+| Issue | Check |
+|-------|--------|
+| PHP extensions missing | `php.ini`; restart IIS |
+| Database connection error | `database.php`; MySQL service running |
+| Permission denied | IIS app pool identity on `datafiles`, `files`, `logs` |
+| Data import fails | FastAPI service; `.env` `STORAGE_PATH`; [Post-install smoke tests](/tech_post_install_configuration.html#smoke-tests) |
+| Worker service wrong path | `-AppRoot` must be `editor\` (where `index.php` lives), not the parent `metadata-editor` folder |
 
 
+## Next steps
 
+1. [Post-install configuration](/tech_post_install_configuration.html)
+2. [Managing users and roles](/tech_roles_permissions.html)
+3. [Quick start](/quick_start_overview.html)

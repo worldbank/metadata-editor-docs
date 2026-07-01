@@ -27,12 +27,32 @@ export default defineConfig({
         ]
       },
       {
-        text: 'Specifications, installation, and upgrade',
+        text: 'Installation and upgrade',
+        collapsed: false,
         items: [
           { text: 'Technical specifications', link: '/tech_technical_specifications' },
-          { text: 'Installation', link: '/tech_installation' },
-          { text: 'Installation (Windows)', link: '/tech_installation_windows' },
-          { text: 'Installation (Desktop)', link: '/tech_installation_desktop' },
+          {
+            text: 'Installation',
+            link: '/tech_installation',
+            collapsed: false,
+            items: [
+              { text: 'Linux server', link: '/tech_installation_linux' },
+              { text: 'Windows server', link: '/tech_installation_windows' },
+              { text: 'Desktop', link: '/tech_installation_desktop' },
+              { text: 'PHP installation', link: '/tech_installation_php' },
+              { text: 'Clean URLs', link: '/tech_installation_clean_urls' }
+            ]
+          },
+          {
+            text: 'FastAPI service',
+            collapsed: true,
+            items: [
+              { text: 'Install and configure', link: '/tech_installation_data_api' },
+              { text: 'Run the FastAPI service', link: '/tech_installation_fastapi' }
+            ]
+          },
+          { text: 'Post-install configuration', link: '/tech_post_install_configuration' },
+          { text: 'Jobs and background workers', link: '/tech_jobs_and_workers' },
           { text: 'Upgrading', link: '/tech_upgrading' }
           /*
           { text: 'Migrating content from Nesstar or NADA', link: '/tech_migrating' },
@@ -46,7 +66,8 @@ export default defineConfig({
         ]
       },
       {
-        text: ' Quick start',
+        text: 'Quick start',
+        collapsed: false,
         items: [
           { text: 'Overview', link: '/quick_start_overview' },
           { text: 'Document', link: '/quick_start_document' },
@@ -68,20 +89,24 @@ export default defineConfig({
       },
       {
         text: 'Managing projects, collections, and users',
+        collapsed: false,
         items: [
           { text: 'Managing projects', link: '/managing_projects' },
           { text: 'Managing collections', link: '/managing_collections' },
+          { text: 'Managing background jobs', link: '/managing_jobs' },
           { text: 'Managing users and roles', link: '/tech_roles_permissions' }
         ]
       },
       {
         text: 'Documenting data',
+        collapsed: false,
         items: [
           { text: 'General instructions', link: '/documenting_general_instructions' },
           { text: 'Document', link: '/documenting_document' },
           {
             text: 'Microdata',
             link: '/documenting_microdata',
+            collapsed: false,
             items: [
               { text: 'Before you start', link: '/documenting_microdata_before_you_start' },
               { text: 'Create a new project', link: '/documenting_microdata_create_project' },
@@ -118,6 +143,7 @@ export default defineConfig({
         items: [
           { text: 'Introduction to the API', link: '/ME_API' }
           /*
+          { text: 'API reference', link: '/api_reference' },
           { text: 'For Python users', link: '/API_python' },
           { text: 'For R users', link: '/API_R' }
            */

@@ -1,135 +1,90 @@
-# FastAPI as service
+# Run the FastAPI service
 
-See instructions on setting up FastAPI as a service on Windows and Linux (Systemd service)
+Install the **Metadata Editor FastAPI** service as an operating-system service (`editor-fastapi`) so it starts at boot and runs under a dedicated account.
+
+> **Install first:** Complete [Install and configure the FastAPI service](/tech_installation_data_api.html) (`.env`, `STORAGE_PATH`, Python environment, manual test) before installing a system service.
+
+> **Not the background worker.** The Metadata Editor [background worker](/tech_jobs_and_workers.html) is a separate PHP process for the job queue.
+
 
 ## Prerequisites
 
-- Make sure you have already installed and tested the `Metadata Editor FastAPI`, using the [steps here](tech_installation.html##installing-and-configuring-metadata-editor-fastapi-python-fastapi)
+- FastAPI service tested manually (`./start.sh -f` or `start.bat -f`)
+- `.env` configured with production `STORAGE_PATH` and `HOST=127.0.0.1`
+- Python interpreter path known (Conda `metadata-editor` env or `fastapi/.venv/bin/python`)
+
+Official scripts live in the [metadata-editor-fastapi](https://github.com/worldbank/metadata-editor-fastapi) repository under `deploy/linux/` and `deploy/windows/`.
 
 
-## FastAPI service on Windows
+## Linux (systemd)
 
-To run a FastAPI app as a service on Windows, you can use **NSSM** (Non-Sucking Service Manager) to wrap your FastAPI `uvicorn` command.
+From the FastAPI application directory:
 
----
-
-### Step 1: Download and Install NSSM
-
-- Download NSSM from: https://nssm.cc/download
-- Extract and place the nssm.exe file somewhere on your system (e.g., C:\nssm).
-
-
-### Step 2: Create a Batch File to Run FastAPI
-- Create a `.bat` file to run Metadata Editor FastAPI app (e.g., `run_fastapi.bat`). 
-- Save the `.bat` file in the same folder as the FastAPI app.
-
-
-```
-@echo off
-cd /d C:\path\to\fastapi-app-folder
-call C:\path\to\your\venv\Scripts\activate.bat
-uvicorn main:app --host 0.0.0.0 --port 8000
-
+```bash
+cd /var/www/metadata-editor/fastapi/deploy/linux
+sudo ./install-service.sh
 ```
 
-### Step 3: Install the Service with NSSM
+The script creates a systemd unit (typically `editor-fastapi`), sets permissions on shared storage when configured, and enables the service.
 
-1. Open Command Prompt as Administrator and navigate to the folder where you have extracted `NSSM` e.g. c:\nssm
+Verify:
 
-2. Run the following command to install the service:
-
-```
-nssm install
-```
-
-![image](img/ME_UG_v1-0-0_tech_nssm.png)
-
-3. In the GUI:
-
-![image](img/ME_UG_v1-0-0_tech_nssm_edit.png)
-
-- `Path`: C:\path\to\bat\file\run_fastapi.bat
-- `Startup directory`: C:\path\to\fastapi-app-folder
-- `Service name`: Editor FastAPI
-
-
-Click **Install service** to finish installing the service.
-
-
-### Step 4: Start or stop the Service
-
-```
-net start <SERVICE-NAME>
-
-net stop <SERVICE-NAME>
+```bash
+sudo systemctl status editor-fastapi
+journalctl -u editor-fastapi -f
+curl -s http://127.0.0.1:8000/docs | head
 ```
 
-Or use the Windows services management tool and verify the service for FastAPI (e.g. pydatatools) is listed and is running. If the service is not running, click on the start option to start the service. 
-
-![image](img/ME_UG_v1-0-0_tech_services.png)
- 
-
-To Test the service is running, open a web browser and visit http://locahost:8000 
+Full parameters, manual setup, and shared-storage permissions: [FastAPI deploy/linux README](https://github.com/worldbank/metadata-editor-fastapi/blob/main/deploy/linux/README.md).
 
 
+## Windows (NSSM)
 
+1. Install [Miniconda](https://docs.anaconda.com/miniconda/) and create the `metadata-editor` environment (see [Install and configure the FastAPI service](/tech_installation_data_api.html)), **or** use a `.venv` Python path.
 
+2. Find the Python executable:
 
-## FastAPI service on Linux
-
-This guide shows how to run a FastAPI application as a service using **systemd** on Linux.
-
-
-### Step 1 - Create a virtual environment (recommended)
-
-```
-cd /path/to/your/fastapi/app
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-
+```bat
+conda activate metadata-editor
+where python
 ```
 
-### Step 2 - Step 2: Create a systemd service file
+3. Open **Administrator** Command Prompt:
 
-Create a service file in `/etc/systemd/system/editor_fastapi.service`:
-
-```
-[Unit]
-Description=Metadata Editor FastAPI
-After=network.target
-
-[Service]
-User=your-linux-username
-Group=your-linux-username
-WorkingDirectory=/path/to/your/fastapi/app
-ExecStart=/path/to/your/fastapi/app/venv/bin/uvicorn main:app --host 0.0.0.0 --port 8000
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
+```bat
+set CONDA_PYTHON_PATH=C:\Users\you\miniconda3\envs\metadata-editor\python.exe
+cd /d C:\inetpub\metadata-editor\fastapi\deploy\windows
+install-service.bat
 ```
 
-Note: Replace `your-linux-username`, `main:app`, and paths accordingly.
+Adjust paths to match your installation.
 
-### Step 3: Reload systemd and start the service
+Verify:
 
-```
-sudo systemctl daemon-reexec
-sudo systemctl daemon-reload
-sudo systemctl start editor_fastapi.service
-```
-
-### Step 4: Enable the service on boot
-
-```
-sudo systemctl enable editor_fastapi.service
+```bat
+nssm status editor-fastapi
+curl http://127.0.0.1:8000/docs
 ```
 
-### Step 5: Check service status
-
-```
-sudo systemctl status editor_fastapi.service
-```
+Details and service account options: [FastAPI deploy/windows README](https://github.com/worldbank/metadata-editor-fastapi/blob/main/deploy/windows/README.md).
 
 
+## Do not use in production
+
+- `uvicorn ... --reload`
+- Binding to `0.0.0.0` without firewall restrictions
+- Running as root (Linux) or LocalSystem without considering file permissions
+- Batch files that run `pip install` on every service start
+
+Use the deploy scripts and a fixed Python interpreter path instead.
+
+
+## Troubleshooting
+
+| Symptom | Action |
+|---------|--------|
+| Service fails immediately | Check `journalctl` / NSSM logs; confirm `.env` and `STORAGE_PATH` |
+| Editor cannot reach FastAPI service | Confirm `HOST=127.0.0.1`, port 8000, and `data_api_url` in editor config |
+| Permission denied on files | Align service user with web server group on `datafiles` |
+
+Return to [Post-install configuration](/tech_post_install_configuration.html) for end-to-end verification.
