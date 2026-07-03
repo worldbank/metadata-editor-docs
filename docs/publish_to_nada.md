@@ -71,7 +71,46 @@ It offers the following options:
 - **Open access.** Data are accessible under an open license (the most permissive option).
 
 
+## Indicators — DSD and observation data
 
+For **indicator** projects (not microdata external resources), the Metadata Editor can publish:
 
+1. **Project metadata** — descriptive/reference metadata (same as other project types).
+2. **Bound data structure (DSD)** — the global structure attached to the project, including linked codelists, imported into NADA via the catalog's data structures API.
+3. **Observation data** — published rows exported from the editor's data store and uploaded to NADA as timeseries data (requires metadata to be published first in the same run).
 
+These options appear on the **Publish to NADA** page when the project type is **Indicator** and a data structure is bound or observation data exist.
 
+### Prerequisites
+
+| To publish… | You need… |
+|-------------|-----------|
+| Metadata | Valid metadata, configured NADA catalog, API key with publish permission |
+| DSD | A **global data structure attached** to the project; structure validation passed |
+| Observation data | **Imported published data** in the project; **Publish project metadata** selected in the same publish run (data publish requires metadata on NADA first) |
+
+Install and configure the [FastAPI data service](/tech_installation_data_api.html) before importing data to publish.
+
+### Publish options (indicator)
+
+In addition to the standard frames (**Catalog**, **Project options**, **External resources**, **Options**), indicator projects show:
+
+- **Publish DSD to NADA** — export the bound structure (and referenced codelists) to the catalog. Enabled when a structure is attached.
+- **Overwrite DSD on NADA** — when the DSD already exists on NADA but differs from the local binding, allow replacing it. Shown when NADA reports an existing DSD that does not match the local hash.
+- **Publish indicator data to NADA** — export observations as CSV and upload to NADA (resumable upload for large files). Enabled when the project has published observation rows.
+
+The publish dialog may show **local vs NADA** status for the DSD (match/mismatch) and observation counts to help you decide whether to overwrite or republish data.
+
+### Recommended order in one publish run
+
+1. Select **Publish project metadata** (and thumbnail / external resources as needed).
+2. Enable **Publish DSD to NADA** if the catalog should receive the structure definition.
+3. Enable **Publish indicator data to NADA** if observations should be available in the catalog.
+
+If the DSD already exists on NADA and you changed the local structure, use **Overwrite DSD on NADA** or the publish step skips the DSD with a message that it already exists.
+
+### Metadata-only indicators
+
+If you documented metadata only (see [Quick start: Indicator](/quick_start_indicator.html)), publish metadata and external resources as for any project type. Leave DSD and indicator data options unchecked.
+
+For the full indicator reference, see [Export and publish](/documenting_indicator_export_publish.html) and [Documenting indicators](/documenting_indicator.html).

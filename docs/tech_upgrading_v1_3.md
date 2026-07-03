@@ -63,7 +63,7 @@ Re-running individual `ALTER` statements may produce duplicate-column errors if 
 The v1.3 migration **drops abandoned per-project DSD/codelist tables** if present and moves indicator structural metadata to the **global registry**. After upgrade:
 
 - Review indicator projects that used the old DSD UI.
-- Re-bind projects to global data structures if needed (see future indicator documentation).
+- Re-bind projects to global data structures if needed (see [Structural metadata](/structural_metadata.html) and [Structural metadata (project)](/documenting_indicator_data_structure.html)).
 
 Existing project **descriptive metadata** is not removed by this migration.
 

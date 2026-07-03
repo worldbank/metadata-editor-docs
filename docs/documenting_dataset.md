@@ -1,6 +1,8 @@
 # Documenting a database or dataset
 
-In many cases, indicators are organized into databases or datasets. For example, the World Development Indicators are a database (or dataset) of around 1500 indicators, availableeach one of them available for about 200 geographies. In addition to documenting the indicators independently, some organizations may want to document their databases/datasets.
+In many cases, indicators are organized into databases or datasets. For example, the World Development Indicators are a database (or dataset) of around 1500 indicators, each available for about 200 geographies. In addition to documenting the indicators independently, some organizations may want to document their databases/datasets.
+
+> In the Metadata Editor, create a **Database** project type (`indicator-db`) to document the container. Database projects hold **reference metadata only** — no data structure binding, CSV import, or observation charts. Link indicators to the database using **Database ID** in [Reference metadata](/documenting_indicator_descriptive_metadata.html).
 
 
 ## The metadata standard

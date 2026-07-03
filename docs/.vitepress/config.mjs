@@ -53,6 +53,7 @@ export default defineConfig({
             ]
           },
           { text: 'Post-install configuration', link: '/tech_post_install_configuration' },
+          { text: 'OpenID Connect (OIDC)', link: '/tech_user_authentication' },
           { text: 'Jobs and background workers', link: '/tech_jobs_and_workers' },
           {
             text: 'Upgrading',
@@ -107,6 +108,15 @@ export default defineConfig({
         ]
       },
       {
+        text: 'Structural metadata',
+        collapsed: false,
+        items: [
+          { text: 'Overview', link: '/structural_metadata' },
+          { text: 'Managing codelists', link: '/managing_codelists' },
+          { text: 'Managing data structures', link: '/managing_data_structures' }
+        ]
+      },
+      {
         text: 'Documenting data',
         collapsed: false,
         items: [
@@ -122,7 +132,27 @@ export default defineConfig({
               { text: 'Import and document the dataset', link: '/documenting_microdata_import_document' }
             ]
           },
-          { text: 'Indicator', link: '/documenting_indicator' },
+          {
+            text: 'Indicator',
+            link: '/documenting_indicator',
+            collapsed: false,
+            items: [
+              { text: 'Before you start', link: '/documenting_indicator_before_you_start' },
+              {
+                text: 'Concepts',
+                collapsed: true,
+                items: [
+                  { text: 'SDMX and the World Bank schema', link: '/documenting_indicator_concepts_sdmx' },
+                  { text: 'Long vs wide format', link: '/documenting_indicator_concepts_long_wide' },
+                  { text: 'Dimensions vs separate indicators', link: '/documenting_indicator_concepts_dimensions' }
+                ]
+              },
+              { text: 'Reference metadata', link: '/documenting_indicator_descriptive_metadata' },
+              { text: 'Structural metadata (project)', link: '/documenting_indicator_data_structure' },
+              { text: 'Observation data', link: '/documenting_indicator_import_data' },
+              { text: 'Export and publish', link: '/documenting_indicator_export_publish' }
+            ]
+          },
           { text: 'Databases or datasets', link: '/documenting_dataset' },
           { text: 'Geographic dataset or service', link: '/documenting_geographic' },
           { text: 'Image', link: '/documenting_image' },

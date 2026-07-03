@@ -255,7 +255,9 @@ Using Python:
 
 ### Example 3: Extract time series and related metadata from an Excel file, and publish in the Metadata Editor
 
-You have an Excel file with time series data for multiple indicators in one sheet, and the related metadata in another sheet. You want to extract the data, format it in a suitable format for publishing in the Metadata Editor and NADA, create the descriptive and structural metadata, and publish it in the Metadata Editor (creating one project per indicator).
+> **v1.3 (indicators):** Inline `data_structure` in project metadata is **no longer supported**. Create the DSD in the [global registry](/structural_metadata.html) (UI or `POST /api/data_structures/create` and related endpoints), then **bind** it to the project with `data_structure_reference` on create/update or `POST /api/indicator_dsd/bind_global/{sid}`. Import observation data with `POST /api/indicator_dsd/data_upload_prepare/{sid}` and `data_upload_import/{sid}`, or `POST /api/jobs/import_indicator_data` for background import. See [Observation data](/documenting_indicator_import_data.html) and the [API reference](/api_reference.html).
+
+You have an Excel file with time series data for multiple indicators in one sheet, and the related metadata in another sheet. You want to extract the data, format it in a suitable format for publishing in the Metadata Editor and NADA, create the descriptive metadata, and publish it in the Metadata Editor (creating one project per indicator).
 
 The data in the Excel file looks like this. It contains one row per series, with years in columns X1960 to X2023.
 
@@ -354,8 +356,10 @@ for(i in 1:length(list_indicators)) {
     !is.null(x$uri) && !is.na(x$uri) && nzchar(trimws(x$uri))
   }, list_links)
   
-  # We create the data structure definition (we describe all data file columns).
-  # This structure will be embedded in the indicator metadata.
+  # We create the data structure definition (column layout for the long-format CSV).
+  # v1.3: Create this in the global registry (POST /api/data_structures/...) instead
+  # of embedding data_structure in project metadata. Then bind via
+  # data_structure_reference or POST /api/indicator_dsd/bind_global/{sid}.
   list_str <- list(
     list(
       name = "Country_Name",
@@ -426,8 +430,9 @@ for(i in 1:length(list_indicators)) {
         list(name = "Creative Commons Attribution 4.0 International (CC BY 4.0)",
              uri = "https://creativecommons.org/licenses/by/4.0/")),
       series_groups = list(list(name = meta$Topic[iNo]))
-    ),
-    data_structure = list_str
+    )
+    # v1.3: omit data_structure from metadata; bind global DSD after create
+    # data_structure = list_str
   )
   
   # Publish the metadata to the Metadata Editor 
@@ -445,8 +450,9 @@ for(i in 1:length(list_indicators)) {
     thumbnail = thumbnail
   )
   
-  # Upload the data to the Metadata Editor (optional) 
-  # ...
+  # v1.3 follow-up (not shown): create/register list_str as a global DSD if needed,
+  # bind to project sid, then POST data_upload_prepare + data_upload_import
+  # or POST /api/jobs/import_indicator_data with df_sel.csv (long format).
     
 }
 
