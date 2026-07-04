@@ -2,6 +2,8 @@
 
 Access to the Metadata Editor is managed by the system administrator(s) within your organization. User accounts can be created individually or by configuring the organization's authentication system to automatically register all members as authorized users (using a Single Sign-On - SSO).
 
+Site administrators who enable **OpenID Connect (OIDC)** should follow [OpenID Connect (OIDC) authentication](/tech_user_authentication.html) for provider setup and configuration.
+
 ## Logging In and Out
 
 To access the Metadata Editor (login):

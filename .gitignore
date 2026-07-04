@@ -26,4 +26,4 @@ Thumbs.db
 
 # Optional: Ignore lock files if not needed
 yarn.lock
-pnpm-lock.yaml
+pnpm-lock.yamldocs/.vitepress/openapi.bundled.json

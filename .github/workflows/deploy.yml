@@ -17,11 +17,10 @@ permissions:
   pages: write
   id-token: write
 
-# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
-# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+# One Pages deployment at a time; cancel stale runs to avoid wedged deploys.
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   # Build job
@@ -32,23 +31,19 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Not needed if lastUpdated is not enabled
-      # - uses: pnpm/action-setup@v3 # Uncomment this block if you're using pnpm
-      #   with:
-      #     version: 9 # Not needed if you've set "packageManager" in package.json
-      # - uses: oven-sh/setup-bun@v1 # Uncomment this if you're using Bun
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 24.0.2
-          cache: npm # or pnpm / yarn
+          node-version: 24
+          cache: npm
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
       - name: Install dependencies
-        run: npm ci --loglevel verbose
+        run: npm ci
       - name: Build with VitePress
-        run: npm run docs:build # or pnpm docs:build / yarn docs:build / bun run docs:build
+        run: npm run docs:build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: docs/.vitepress/dist
 
@@ -56,11 +51,37 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment3.outputs.page_url || steps.deployment2.outputs.page_url || steps.deployment.outputs.page_url }}
     needs: build
     runs-on: ubuntu-latest
     name: Deploy
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
+        continue-on-error: true
+
+      - name: Wait before retry
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 60
+
+      - name: Retry deploy to GitHub Pages (2/3)
+        if: steps.deployment.outcome == 'failure'
+        id: deployment2
+        uses: actions/deploy-pages@v5
+        continue-on-error: true
+
+      - name: Wait before final retry
+        if: steps.deployment.outcome == 'failure' && steps.deployment2.outcome == 'failure'
+        run: sleep 60
+
+      - name: Retry deploy to GitHub Pages (3/3)
+        if: steps.deployment.outcome == 'failure' && steps.deployment2.outcome == 'failure'
+        id: deployment3
+        uses: actions/deploy-pages@v5
+
+      - name: Verify deployment succeeded
+        if: steps.deployment.outcome != 'success' && steps.deployment2.outcome != 'success' && steps.deployment3.outcome != 'success'
+        run: |
+          echo "All deployment attempts failed"
+          exit 1

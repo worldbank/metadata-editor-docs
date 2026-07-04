@@ -127,7 +127,7 @@ If you only use the editor interactively and do not enqueue API jobs, you may st
 
 ## API access
 
-The same jobs can be listed and managed programmatically. See [Introduction to the API](/ME_API.html) and the `/api/jobs` endpoints in the API reference.
+The same jobs can be listed and managed programmatically. See [Introduction to the API](/ME_API.html) and the `/api/jobs` endpoints in the [API reference](https://worldbank.github.io/metadata-schemas/).
 
 Non-admin API users only see their own jobs, matching the Jobs page behaviour.
 
