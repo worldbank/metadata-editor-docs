@@ -194,9 +194,9 @@ export default defineConfig({
       {
         text: 'Metadata Editor API',
         items: [
-          { text: 'Introduction to the API', link: '/ME_API' }
+          { text: 'Introduction to the API', link: '/ME_API' },
+          { text: 'API reference', link: 'https://worldbank.github.io/metadata-schemas/' }
           /*
-          { text: 'API reference', link: '/api_reference' },
           { text: 'For Python users', link: '/API_python' },
           { text: 'For R users', link: '/API_R' }
            */
