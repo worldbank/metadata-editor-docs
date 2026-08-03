@@ -36,3 +36,5 @@ Controlled vocabularies play a critical role in data discovery. By applying stan
 Administrative metadata is the metadata needed for the administration of specific data management and dissemination systems. As the requirements of such systems vary widely, no pre-defined standard or schema is provided. Templates are used in the Metadata Editor to define the content of administrative metadata schemas, fully tailored to the needs of the systems in place in the organization that uses the Metadata Editor. 
 
 > Instructions related to administrtaive metadata and their templates are provided in the chapter **Documenting data: adminitstrative metadata**.
+
+For a **new project type** defined by uploading **JSON Schema** (not only trimming an existing standard), see [Custom metadata schemas](/custom_schemas.html).

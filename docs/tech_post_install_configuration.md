@@ -103,6 +103,16 @@ Run these checks before go-live:
 If microdata import fails, verify the FastAPI service is running, `STORAGE_PATH` matches editor storage, and `data_api_url` is correct.
 
 
+## Enabled project schemas
+
+Under **Site administration → Site configurations**, **Enabled project schemas** controls which metadata types appear when users create or import projects.
+
+- **All schemas** (default behaviour when everything is enabled) — includes every active core type and any [custom metadata schemas](/custom_schemas.html) you register later.
+- Restricted selection — only checked types appear in the create-project picker; existing projects are unchanged.
+
+Custom schema JSON files are stored under the editor storage path (by default `{storage_path}/user-schemas/`). See [Custom metadata schemas](/custom_schemas.html) for registry setup and backups.
+
+
 ## Production services
 
 | Service | When | Guide |

@@ -98,6 +98,15 @@ export default defineConfig({
         ]
       },
       {
+        text: 'Custom metadata schemas',
+        collapsed: false,
+        items: [
+          { text: 'Overview', link: '/custom_schemas' },
+          { text: 'Managing custom schemas', link: '/managing_custom_schemas' },
+          { text: 'JSON Schema guidelines', link: '/custom_schemas_json_schema_guidelines' }
+        ]
+      },
+      {
         text: 'Managing projects, collections, and users',
         collapsed: false,
         items: [
