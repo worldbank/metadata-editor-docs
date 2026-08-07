@@ -204,5 +204,7 @@ To translate templates:
 3. Translate all labels, instructions, and controlled vocabularies in the duplicate.
 4. Set the translated template as the default for your language.
 
+When a field uses a **registry codelist**, translate code labels in [Managing codelists](/managing_codelists.html#codelist-translations) rather than duplicating codes inside each template.
+
 By translating both the application UI and the templates, you ensure a consistent experience for users across all languages.
 

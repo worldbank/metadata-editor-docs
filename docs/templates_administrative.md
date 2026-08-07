@@ -39,18 +39,18 @@ Start adding the metadata elements you need. Select the *Metadata* folder in the
 Once created, add the following information on the metadata element:
 - ***Key***: The *Key* is the name under which the element will be stored in the JSON template file (the unique identifier of the metadata element). The key can only contain alphanumeric values, and must be unique to each metadata element within the template.
 - ***Label***: Give a label to the new element (replace the *untitled* label).
-- For all other components, see section **Designing templates**.
+- For all other components, see [Designing templates](/templates_design.html).
 
 ![image](img/ME_UG_v1-0-0_template_administrative_field_new_elements.png)
 
 
-## Defining who can enter administrative metadata for a project
+## Defining who can enter administrative metadata for a project {#defining-who-can-enter-administrative-metadata-for-a-project}
 
 Administrative templates are designed, usually by IT/system experts, for the needs of specific data management or dissemination systems. The information to be entered in an administrative template when a project is documented will usually not be entered by the data curator (who will document the data), but by a system expert. This means that a different permission system will apply to the management of the content of administrative metadata.
 
 The information on who has permission to enter administrative metadata is not set at the project level, but at the template level. The list of contributors authorized to enter content in a metadata template is defined in the ACL tab of the metadata sharing screen.
 
-To access the screen, click on SHARE in the template menu (accessed by clicking on the tripple-dot icon in the template list). 
+To access the screen, click on SHARE in the template menu (accessed by clicking on the triple-dot icon in the template list). 
 
 ![image](img/ME_UG_v1-0-0_template_administrative_share_menu.png)
 

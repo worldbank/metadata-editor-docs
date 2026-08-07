@@ -13,8 +13,6 @@ The registry lists all site-wide codelists. Each row shows **Title**, **Name**, 
 
 Use the search box to filter by title, name, or agency. Expand a row with multiple versions to see the version family (version number, status, item count, and DSD usage per version).
 
-> **Screenshot:** Codelists registry — list with search, status chips, and action menu.
-
 ![Codelists registry list](img/ME_UG_v1_3_indicator_codelists_list.png)
 
 
@@ -30,7 +28,6 @@ Use the search box to filter by title, name, or agency. Expand a row with multip
 
 Alternatively, [import a codelist from SDMX](#import-whole-codelists) or JSON instead of creating one manually.
 
-> **Screenshot:** Edit codelist — identifying metadata (agency, name, version, status, title).
 
 ![Codelist metadata form](img/ME_UG_v1_3_indicator_codelist_new_metadata.png)
 
@@ -45,8 +42,6 @@ Header translations define the codelist title and description in additional ISO 
 4. Click **Save translations**.
 
 Languages added here also appear in the **Items** grid, so you can enter multi-language labels for each code (one label row per language).
-
-> **Screenshot:** Codelist translations — language selector, label, and description rows.
 
 ![Codelist header translations](img/ME_UG_v1_3_indicator_codelist_edit_translations.png)
 
@@ -70,7 +65,6 @@ Edit codes inline in the grid. New and modified rows are highlighted until you c
 
 Use **Add row** to insert a blank code, or select rows and **Delete selected** to remove saved codes in bulk.
 
-> **Screenshot:** Codelist items editor — grid with sort, parent, code, label, and description columns.
 
 ![Codelist items editor](img/ME_UG_v1_3_indicator_codelist_edit_items.png)
 
@@ -86,8 +80,6 @@ Expected columns (UTF-8, comma-separated):
 Import **replaces all existing items**. Use **Preview only (dry run)** to validate the file without saving. If you have unsaved grid edits, confirm before importing — the import discards them.
 
 Click **Export CSV** to download the current items in the same format.
-
-> **Screenshot:** Import items (CSV) dialog with dry-run option.
 
 ![Import codelist items from CSV](img/ME_UG_v1_3_indicator_codelist_import_csv_items.png)
 
@@ -150,7 +142,6 @@ Both import dialogs support:
 4. If a list with the same agency, id, and version already exists, enable **Replace existing lists with the same agency, id, and version** to overwrite items.
 5. Click **Import**. The new row appears in the registry; open it to review metadata and codes.
 
-> **Screenshot:** Import codelists (SDMX-ML) — file or URL, dry run, and replace options.
 
 ![Import codelists SDMX dialog](img/ME_UG_v1_3_indicator_codelist_import_sdmx.png)
 
@@ -182,6 +173,20 @@ Access to the codelists registry is controlled by site roles (v1.3+). Typical pe
 | Lock, unlock, archive, restore | Site administrator |
 
 Assign **Codelist manager** (or equivalent registry role) in **Users and roles** when non-administrators need to maintain shared lists. See [Upgrading to v1.3](/tech_upgrading_v1_3.html) for registry role assignments.
+
+
+## Use codelists in metadata templates
+
+Registry codelists are not only for [data structures](/managing_data_structures.html). In **Template Manager**, open a field’s **CONTROLLED VOCABULARY** tab and choose **Registry codelist** to link the field to a list in this registry instead of maintaining codes inline in the template.
+
+- Maintain codes once in **Codelists**, then reuse them across many templates and DSD components.
+- For **array** fields, map registry code and label columns to the array’s columns so curators pick codes from the registry when editing metadata.
+- Fields restricted by schema **enum** values may only allow custom inline lists or must match schema allowed values; see [Designing templates — Controlled vocabularies](/templates_design.html#controlled-vocabularies).
+
+
+![Template field registry codelist link (placeholder)](img/ME_UG_v1_3_template_controlled_vocabulary_registry.png)
+
+
 
 
 ## Next steps

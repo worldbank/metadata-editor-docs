@@ -224,6 +224,8 @@ We recommend using the default template, which combines INSPIRE, GEMINI, and gfe
 
 > Switching from one template to another will not impact the metadata that has already been entered; no information will be deleted from the metadata.
 
+Template designers can turn optional editor areas on or off per template (for example **Feature catalogue** or **Image gallery**) using **Project editor modules** on the template description page in Template Manager — see [Designing templates — Project editor modules](/templates_design.html#project-editor-modules). If a module is hidden, curators will not see that area in the project navigation even though related metadata fields may remain in the form tree.
+
 Once a project has been created, you can import the data files (if available) and start documenting the dataset. 
 
 

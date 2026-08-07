@@ -10,7 +10,8 @@ Metadata templates allow for tailoring metadata elements in several ways:
 - ***Label:*** The label of a metadata element provided in the metadata standard can be replaced with a label that conform to an organization's lexicon or stipulations.
 - ***Status:*** Some metadata elements may be declared as *required* in the metadata standard itself. This status cannot be changed. But metadata elements that are not required in a standard can be designated as *required* or *recommended* in a template. Declaring a metadata element as required will not prevent the metadata from being saved when no content is provided, but it will prevent the metadata from being *validated*. It thus serves as a useful quality control. It is however advised against making too many elements required, and to set important but not crucial elements as recommended rather than required.
 - ***Description/instructions:*** A tailored description and instructions can be provided in a template for each metadata element. These descriptions serve as guidelines for data curators.
-- ***Controlled vocabularies:*** A controlled vocabulary can be specified for a metadata element, when applicable. 
+- ***Controlled vocabularies:*** A controlled vocabulary can be specified for a metadata element, when applicable — either as a **custom list** defined in the template or by linking a field to a **registry codelist** shared site-wide (see [Designing templates](/templates_design.html#controlled-vocabularies) and [Managing codelists](/managing_codelists.html)).
+- ***Project editor modules:*** For some data types, optional areas of the project editor (for example a geospatial feature catalogue or image gallery) can be hidden per template without removing metadata fields from the form layout (see [Project editor modules](/templates_design.html#project-editor-modules)).
 - ***Default values:*** A default value can be set for a metadata element. Default values in the Metadata editor will not be automatically applied; an option is provided to the data curator to apply default values that have been entered in the template.  
 - ***Validation rules:*** Customized validation rules can be set for each metadata element, using regular expressions, by setting a valid range for values, or other, to guarantee metadata coherence and uniformity.
 - ***Adding elements:*** Elements that are not part of a metadata standard can be added in a template, as *additional* elements.
@@ -35,6 +36,6 @@ Controlled vocabularies play a critical role in data discovery. By applying stan
 
 Administrative metadata is the metadata needed for the administration of specific data management and dissemination systems. As the requirements of such systems vary widely, no pre-defined standard or schema is provided. Templates are used in the Metadata Editor to define the content of administrative metadata schemas, fully tailored to the needs of the systems in place in the organization that uses the Metadata Editor. 
 
-> Instructions related to administrtaive metadata and their templates are provided in the chapter **Documenting data: adminitstrative metadata**.
+> Instructions related to administrative metadata and their templates are provided in [Administrative metadata](/templates_administrative.html).
 
 For a **new project type** defined by uploading **JSON Schema** (not only trimming an existing standard), see [Custom metadata schemas](/custom_schemas.html).

@@ -50,6 +50,25 @@ The editor allows creating new custom roles. To create a new role, Administrator
 For administrative metadata, user access is managed via the template manager. 
 
 
+## Templates and sharing {#templates-and-sharing}
+
+Descriptive and administrative **template definitions** are maintained in **Template Manager** (`TEMPLATES` in the main menu). Access is controlled in two layers:
+
+1. **Site role — Template manager**  
+   Under **Site administration → Users and roles**, administrators can assign **Template manager** permissions (view, edit, delete, duplicate, admin). Users with template **edit** or **admin** can change template JSON, set defaults, and use actions such as duplicate and export. Exact permission names depend on how your site configures roles.
+
+2. **Per-template SHARE**  
+   Template owners (and users with template **admin** on that template) can open **SHARE** from the template list menu and add collaborators with *View* or *Edit* on that template only. This is useful when a small team maintains one indicator or geospatial template without granting global template manager access.
+
+3. **Project Editor role**  
+   The project **Editor** role allows full project editing and **view-only** access to all templates, plus changing which template a project uses. It does **not** allow editing template definitions unless the user also has template edit rights via site role or SHARE.
+
+4. **Administrative metadata ACL**  
+   For administrative metadata templates, the **ACL** tab on the SHARE dialog controls who may enter administrative metadata when the template is attached to a project. See [Administrative metadata](/templates_administrative.html#defining-who-can-enter-administrative-metadata-for-a-project).
+
+See [Designing templates](/templates_design.html) for template workflows, registry codelists on fields, and project editor modules.
+
+
 ## Publishing to NADA
 
 For publishing projects to NADA data catalogues, user is required to have admin access to the NADA.
