@@ -1,0 +1,74 @@
+services:
+  mariadb:
+    image: mariadb:11.7.2-noble
+    restart: "always"
+    volumes:
+      - database:/var/lib/mysql
+      - ./mariadb/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./mariadb/50-server.cnf:/etc/mysql/mariadb.conf.d/50-server.cnf
+    environment:
+      - TZ=Asia/Karachi
+      - MARIADB_ROOT_PASSWORD=123
+    networks:
+      metadata_network:
+        ipv4_address: 192.168.199.2
+
+  editor:
+    restart: "always"
+    image: editor
+    build:
+      context: "editor"
+    environment:
+      - TZ=Asia/Karachi
+      - EDITOR_DATA_API_URL=nginx:8000
+    depends_on:
+      - mariadb
+    networks:
+      metadata_network:
+        ipv4_address: 192.168.199.3
+    volumes:
+      - app:/home/editor/app
+
+  nginx:
+    restart: "always"
+    image: nginx:latest
+    container_name: nginx
+    volumes:
+      - app:/app
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+    environment:
+      - TZ=Asia/Karachi
+    depends_on:
+      - editor
+    networks:
+      metadata_network:
+        ipv4_address: 192.168.199.4
+
+  pydatatools:
+    restart: "always"
+    image: pydatatools
+    dns:
+      - "8.8.8.8"
+    environment:
+      - TZ=Asia/Karachi
+    build:
+      context: "pydatatools"
+    networks:
+      metadata_network:
+        ipv4_address: 192.168.199.5
+
+volumes:
+  database:
+    external: true
+  app:
+    external: true
+
+networks:
+  metadata_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.199.0/24
+          gateway: 192.168.199.1
