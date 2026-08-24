@@ -20,12 +20,15 @@ Common tasks handled by endpoints include:
   - Creating a new metadata record.
   - Updating a specific field within a record.
   - Searching for records that match certain criteria.
+  - Validating project metadata against the JSON Schema and against template field rules.
 
 The official API documentation serves as a directory, detailing which endpoint to use for each action, what parameters are required, and what format to expect in the response.
 
 ## API Documentation
 
 The full documentation of the Metadata Editor API (list and description of all endpoints) is available in annex to this document. Many users will however prefer to make use of the R package or Python library provided to interact with the software (see below).
+
+Schema pass/fail (`GET /api/editor/validate/{id}`) and structured schema/template reports (`GET /api/validation/{sid}/schema`, `GET /api/validation/{sid}/template`) are described in [Validating metadata — Validation API](/validating_metadata.html#validation-api).
 
 
 ## Secure and Controlled Access

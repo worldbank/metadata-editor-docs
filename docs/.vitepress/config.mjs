@@ -130,6 +130,7 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: 'General instructions', link: '/documenting_general_instructions' },
+          { text: 'Validating metadata', link: '/validating_metadata' },
           { text: 'Document', link: '/documenting_document' },
           {
             text: 'Microdata',

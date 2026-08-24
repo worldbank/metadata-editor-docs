@@ -84,7 +84,7 @@ The project *Home* page contains the following components:
 
 - **Template selection.** Allows selection of a metadata template and the option to add administrative metadata.
 
-- **Project validation.** Lists violations, if any, of standard requirements (schema validation) and user-defined template rules (template validation).
+- **Project validation.** Lists violations, if any, of standard requirements (schema validation) and user-defined template rules (template validation). See [Validating metadata](/validating_metadata.html).
 
 - **Collaborators.** Lists registered users with access to the project, along with their assigned roles (*View*, *Edit*, *Admin*).
 

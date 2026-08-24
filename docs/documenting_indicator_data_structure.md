@@ -106,6 +106,8 @@ When importing, use the same column layout as the [SI.POV.DDAY example file](#ex
 
 ## Validation
 
+This section is **indicator data-structure** validation (required column types, codelists, observation keys). It is separate from project **metadata** schema and template validation; see [Validating metadata](/validating_metadata.html).
+
 The overview page reports **structure validation** and, when data have been imported, **data validation**.
 
 ### Structure validation

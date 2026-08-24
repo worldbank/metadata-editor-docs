@@ -81,14 +81,11 @@ A search box is also provided, allowing users to search a metadata element based
 
 ### Project validation
 
-The *Project home* page contains a frame titled *Project validation*, which will indicate whether the metadata that has been entered and saved violates some of the requirements of the standard itself or of the validation rules defined in the template used to document the dataset.
+The *Project home* page contains a frame titled *Project validation*, which indicates whether the saved metadata violates requirements of the metadata standard (**schema validation**) or custom rules defined in the project template (**template validation**). Clicking on a validation error takes you to the element that needs to be edited. Use **View full validation report** for the detailed report.
+
+See [Validating metadata](/validating_metadata.html) for schema vs template rules, the full report, remediations, and the validation API.
 
 ![image](img/ME_UG_v1-0-0_documenting_general_project_validation.png)
-
-- ***Schema validation*** lists the violations of requirements of the metadata standard.
-- ***Template validation*** lists the violations of custom validation rules defined in the metadata template.
-
-Clicking on a validation error will take you to the element that needs to be edited.
 
 
 ### Collaborators

@@ -90,7 +90,7 @@ Map **IDNO** and **Title** in [core field mappings](/managing_custom_schemas.htm
 
 - Prefer clear **object groupings** (`identification`, `description`, …) so generated templates and core mappings stay readable.
 - Use `description` on properties — they flow into generated template field help where supported.
-- Use `enum`, `pattern`, `minimum` / `maximum`, and `required` arrays for validation rules the editor should enforce.
+- Use `enum`, `pattern`, `minimum` / `maximum`, and `required` arrays for validation rules the editor should enforce. How those schema rules surface in the project editor and API is described in [Validating metadata](/validating_metadata.html).
 - Keep `$id` stable if you reference the schema externally; relative `$ref` between uploaded sibling files is the usual pattern for multi-file schemas.
 
 

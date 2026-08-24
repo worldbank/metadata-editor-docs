@@ -45,7 +45,7 @@ In **Options**, select what information you want to publish:
 - The project thumbnail
 - The external resources
 
-Then click **PUBLISH**. If your metadata is valid (contains no validation errors), and your API key provides you with the necessary privileges on the NADA catalog, the metadata and related materials will now be published in the catalog.
+Then click **PUBLISH**. If your metadata is valid (contains no validation errors), and your API key provides you with the necessary privileges on the NADA catalog, the metadata and related materials will now be published in the catalog. See [Validating metadata](/validating_metadata.html).
   
 ![image](img/ME_UG_v1-0-0_publish_to_nada_publish_frame_2.png)
 

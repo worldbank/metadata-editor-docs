@@ -224,7 +224,7 @@ At the top of the tab, **Codelist type** switches between these modes. A green d
   
   ![image](img/ME_UG_v1-0-0_template_customizing_element_default.png)
   
-- ***VALIDATION RULES:*** Validation rules can be set for a metadata element, to control quality. The content entered for the element by the data curator will be validated against this set of rules, and Validation errors will be shown in the project home page. Validation rules can be of different types: regex (regular expression), min or max (minimum or maximum value, for numeric files), max_length (maximum number of characters in the entry), alpha (only letters accepted), alpha_num (only alphanumeric characters allowed), numeric (numeric value must be entered), is_uri (entry must be a URI). When one or multiple validation rules are entered, a green dot appears next to the title of the tab.
+- ***VALIDATION RULES:*** Validation rules can be set for a metadata element, to control quality. The content entered for the element by the data curator will be validated against this set of rules, and validation errors will be shown on the project home page and in the [validation report](/validating_metadata.html). Rules include regular expressions, minimum/maximum **length**, letters only, alphanumeric, numeric, URL (`is_uri`), and ISO date formats. When one or multiple validation rules are entered, a green dot appears next to the title of the tab. See [Validating metadata — template rules](/validating_metadata.html#template-user-defined-validation-rules) for the full list.
   
   ![image](img/ME_UG_v1-0-0_template_customizing_element_validation_rules.png)
   
@@ -246,7 +246,7 @@ For built-in and custom schema types, the Template Manager loads the project **J
 - **Template validation panel:** When the editor detects issues (invalid keys, enum mismatches, or related alignment problems), a **template validation** list may appear on the template page. Click a row to jump to the affected field.
 - **Missing section containers:** Some standards expect fixed top-level *containers* in the tree. If a required container is missing, the editor may offer to add missing section containers — use this before publishing a template to curators.
 
-Alignment checks help prevent projects that validate poorly or export incorrectly; they do not replace field-level **validation rules** defined on individual elements.
+Alignment checks help prevent projects that validate poorly or export incorrectly; they do not replace field-level **validation rules** defined on individual elements. For how those rules are applied to project metadata, see [Validating metadata](/validating_metadata.html).
 
 
 ## Templates and sharing {#templates-and-sharing}
