@@ -155,7 +155,7 @@ Authenticate with an API key as described in [Introduction to the API](/ME_API.h
 
 View access is enough to read reports. Edit access is required for remediations (`move_to_additional`, `remove_fields`, `fix_array_as_object`).
 
-Full request/response schemas are in the [API reference](/api_reference_openapi.html) (Validation tag).
+Full request/response schemas are in the [API reference](https://worldbank.github.io/metadata-schemas/).
 
 ### Pass/fail vs structured report
 
@@ -256,5 +256,5 @@ X-API-Key: your_api_key_here
 - [General instructions](/documenting_general_instructions.html) — project home page
 - [JSON Schema guidelines](/custom_schemas_json_schema_guidelines.html) — authoring schemas that the editor will enforce
 - [Publish to NADA](/publish_to_nada.html) — publishing requires metadata with no validation errors
-- [Introduction to the API](/ME_API.html) / [API reference](/api_reference_openapi.html)
+- [Introduction to the API](/ME_API.html) / [API reference](https://worldbank.github.io/metadata-schemas/)
 - [Structural metadata (project)](/documenting_indicator_data_structure.html#validation) — indicator DSD structure and data validation (separate from this page)
